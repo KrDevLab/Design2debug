@@ -92,7 +92,7 @@ window.renderSiteNav = function renderSiteNav(containerId) {
 
     <!-- Logo -->
   <img
-  src="js/assets/logo.png"
+  src="js/assets/logo.svg"
   alt="Design2Debug Logo"
   width="36"
   height="36"
