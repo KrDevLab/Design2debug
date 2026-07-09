@@ -29,7 +29,7 @@ window.renderHero = function renderHero(containerId) {
             <a href="contact.html" class="inline-flex items-center gap-2 border border-ink px-6 py-3.5 text-sm text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink hover:text-paper">
               Contact us
             </a>
-            <a href="https://example.com" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 border border-rule px-6 py-3.5 text-sm text-ink-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-brand hover:text-brand">
+            <a href="https://www.kishoravi.in/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 border border-rule px-6 py-3.5 text-sm text-ink-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-brand hover:text-brand">
               Founder portfolio ↗
             </a>
           </div>
