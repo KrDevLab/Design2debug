@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About IdentiqX — Why we built the digital identity wallet</title>
+  <meta name="description" content="The story behind IdentiqX: the everyday problems it solves, our privacy-first philosophy, and the vision for a truly personal digital identity wallet." />
+  <meta name="author" content="IdentiqX" />
+  <meta property="og:title" content="About IdentiqX" />
+  <meta property="og:description" content="The story behind IdentiqX, and our privacy-first philosophy." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  />
+
+  <link rel="stylesheet" href="css/tailwind.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-background text-foreground">
+
+  <div id="scroll-progress" class="fixed top-0 left-0 right-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-[var(--primary)] via-[var(--purple)] to-[var(--teal)]"></div>
+
+  <header id="site-header" class="sticky top-0 z-50 bg-transparent transition-all duration-300">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="relative grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--sky)] shadow-glow">
+          <i data-lucide="shield-check" class="h-5 w-5 text-white" style="stroke-width:2.5"></i>
+          <span class="absolute inset-0 rounded-2xl animate-pulse-ring bg-[var(--primary)]/40"></span>
+        </div>
+        <span class="font-display text-lg font-extrabold tracking-tight">Identiq<span class="text-gradient">X</span></span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Home</a>
+        <a href="about.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">About</a>
+        <a href="features.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Features</a>
+        <a href="documents.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Documents</a>
+        <a href="security.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Security</a>
+        <a href="technology.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Technology</a>
+        <a href="roadmap.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Roadmap</a>
+        <a href="download.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Download</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="download.html" class="inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white shadow-glow hover:brightness-110 transition">
+          Get Early Access
+        </a>
+      </div>
+
+      <button id="menu-toggle" class="lg:hidden grid h-10 w-10 place-items-center rounded-xl glass-strong" aria-label="Toggle menu">
+        <i data-lucide="menu" id="icon-menu" class="h-5 w-5"></i>
+        <i data-lucide="x" id="icon-close" class="h-5 w-5 hidden"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden overflow-hidden glass-strong border-t border-border" style="max-height:0; transition:max-height 300ms ease;">
+      <div class="mx-auto max-w-7xl px-4 py-4 grid gap-1">
+        <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Home</a>
+        <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">About</a>
+        <a href="features.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Features</a>
+        <a href="documents.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Documents</a>
+        <a href="security.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Security</a>
+        <a href="technology.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Technology</a>
+        <a href="roadmap.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Roadmap</a>
+        <a href="download.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Download</a>
+        <a href="download.html" class="mt-2 text-center rounded-full bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white">Get Early Access</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="min-h-[calc(100vh-4rem)]">
+
+    <section class="relative overflow-hidden bg-hero">
+      <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute -top-40 -left-20 h-96 w-96 rounded-full bg-[var(--sky)]/25 blur-3xl animate-float-slow"></div>
+        <div class="absolute top-20 -right-20 h-96 w-96 rounded-full bg-[var(--purple)]/20 blur-3xl animate-float-slow" style="animation-delay:2s"></div>
+        <div class="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-[var(--teal)]/20 blur-3xl animate-float-slow" style="animation-delay:4s"></div>
+      </div>
+      <div class="mx-auto max-w-4xl px-6 pt-20 pb-24 text-center lg:pt-28" data-reveal>
+        <p class="inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1.5 text-xs font-semibold text-slate-700">
+          <i data-lucide="heart" class="h-3.5 w-3.5 text-rose-500"></i> Our story
+        </p>
+        <h1 class="mt-6 font-display text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
+          We're building the identity wallet <br />
+          <span class="text-gradient">we've always wanted.</span>
+        </h1>
+        <p class="mt-6 text-lg text-slate-600">
+          IdentiqX started with a simple question: why is it so hard to keep the documents that
+          matter most, right where we can find them?
+        </p>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="max-w-3xl mx-auto text-center" data-reveal>
+        <p class="inline-flex items-center gap-2 rounded-full border border-[var(--primary)]/20 bg-[var(--primary)]/5 px-3 py-1 text-xs font-semibold text-[var(--primary)]">
+          <span class="h-1.5 w-1.5 rounded-full bg-[var(--primary)]"></span> Why we built IdentiqX
+        </p>
+        <h2 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+          The everyday problems <span class="text-gradient">nobody solves well.</span>
+        </h2>
+        <p class="mt-4 text-lg text-muted-foreground">
+          We looked at how people actually manage identity documents today. It's messy. Here's what we saw — and what IdentiqX fixes.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-100 text-rose-600"><i data-lucide="file-x-2" class="h-6 w-6"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Documents scattered everywhere</h3>
+          <p class="mt-2 text-sm text-slate-600">Across email, WhatsApp, drive folders, and photo galleries.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-100 text-rose-600"><i data-lucide="search" class="h-6 w-6"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Slow, painful searching</h3>
+          <p class="mt-2 text-sm text-slate-600">Trying to find that one PDF exactly when you need it most.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-100 text-rose-600"><i data-lucide="shield-alert" class="h-6 w-6"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Privacy concerns</h3>
+          <p class="mt-2 text-sm text-slate-600">Sensitive IDs uploaded to services you don't fully trust.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-100 text-rose-600"><i data-lucide="cloud" class="h-6 w-6"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Cloud dependency</h3>
+          <p class="mt-2 text-sm text-slate-600">No internet? Suddenly you can't access what's yours.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-100 text-rose-600"><i data-lucide="file-text" class="h-6 w-6"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Paper documents</h3>
+          <p class="mt-2 text-sm text-slate-600">Fragile, easy to misplace, impossible to search.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-100 text-rose-600"><i data-lucide="zap" class="h-6 w-6"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Poor experiences</h3>
+          <p class="mt-2 text-sm text-slate-600">Existing wallets feel like forms, not products you love.</p>
+        </div>
+      </div>
+
+      <div class="mt-16" data-reveal>
+        <div class="rounded-[2rem] bg-gradient-to-br from-[var(--primary)] via-[#3b82f6] to-[var(--sky)] p-10 text-white shadow-glow lg:p-14">
+          <p class="text-xs font-semibold uppercase tracking-widest text-white/80">The IdentiqX answer</p>
+          <h3 class="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
+            One private, offline-first, beautifully organized vault — for everything that proves
+            who you are.
+          </h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission / Vision -->
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="grid gap-8 lg:grid-cols-3">
+        <div data-reveal>
+          <div class="relative h-full overflow-hidden rounded-3xl border border-border bg-white p-8 shadow-card">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-blue-500 to-sky-400 shadow-lg"><i data-lucide="target" class="h-7 w-7 text-white"></i></div>
+            <p class="mt-5 text-xs font-semibold uppercase tracking-widest text-slate-500">Mission</p>
+            <p class="mt-2 font-display text-xl font-bold text-slate-900">Give every person a private, delightful home for their most important documents.</p>
+          </div>
+        </div>
+        <div data-reveal>
+          <div class="relative h-full overflow-hidden rounded-3xl border border-border bg-white p-8 shadow-card">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-400 shadow-lg"><i data-lucide="compass" class="h-7 w-7 text-white"></i></div>
+            <p class="mt-5 text-xs font-semibold uppercase tracking-widest text-slate-500">Vision</p>
+            <p class="mt-2 font-display text-xl font-bold text-slate-900">A world where your identity travels with you — never rented from a company.</p>
+          </div>
+        </div>
+        <div data-reveal>
+          <div class="relative h-full overflow-hidden rounded-3xl border border-border bg-white p-8 shadow-card">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-400 shadow-lg"><i data-lucide="rocket" class="h-7 w-7 text-white"></i></div>
+            <p class="mt-5 text-xs font-semibold uppercase tracking-widest text-slate-500">Future</p>
+            <p class="mt-2 font-display text-xl font-bold text-slate-900">Cloud backup, AI assistance, family sharing, and government integrations — on your terms.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core values -->
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="max-w-3xl mx-auto text-center" data-reveal>
+        <p class="inline-flex items-center gap-2 rounded-full border border-[var(--primary)]/20 bg-[var(--primary)]/5 px-3 py-1 text-xs font-semibold text-[var(--primary)]">
+          <span class="h-1.5 w-1.5 rounded-full bg-[var(--primary)]"></span> Core values
+        </p>
+        <h2 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+          The principles that <span class="text-gradient-purple">shape every decision.</span>
+        </h2>
+      </div>
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-blue-500 to-sky-400"><i data-lucide="lock" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Privacy First</h3>
+          <p class="mt-2 text-sm text-slate-600">Your data is yours. We architect around that truth.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-400"><i data-lucide="wifi-off" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Offline First</h3>
+          <p class="mt-2 text-sm text-slate-600">The app should work when the network doesn't.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-rose-500 to-orange-400"><i data-lucide="heart" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Human First</h3>
+          <p class="mt-2 text-sm text-slate-600">Every screen crafted with care and warmth.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-400"><i data-lucide="sparkles" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Craft First</h3>
+          <p class="mt-2 text-sm text-slate-600">Details matter. Motion matters. Rhythm matters.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="max-w-3xl mx-auto text-center" data-reveal>
+        <p class="inline-flex items-center gap-2 rounded-full border border-[var(--primary)]/20 bg-[var(--primary)]/5 px-3 py-1 text-xs font-semibold text-[var(--primary)]">
+          <span class="h-1.5 w-1.5 rounded-full bg-[var(--primary)]"></span> The journey
+        </p>
+        <h2 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+          From idea to <span class="text-gradient">launch.</span>
+        </h2>
+        <p class="mt-4 text-lg text-muted-foreground">An honest look at how IdentiqX came together.</p>
+      </div>
+
+      <div class="relative mt-16">
+        <div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--primary)] via-[var(--purple)] to-[var(--teal)] md:left-1/2"></div>
+        <div class="space-y-10">
+          <!-- Step 1 -->
+          <div class="relative grid gap-4 md:grid-cols-2 md:gap-12" data-reveal>
+            <div class="pl-16 md:pl-0 md:text-right md:pr-12">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--primary)]">Step 1</p>
+              <h3 class="mt-2 font-display text-2xl font-extrabold text-slate-900">Idea</h3>
+              <p class="mt-2 text-slate-600">A frustrating day of searching for one PDF sparked it all.</p>
+            </div>
+            <div></div>
+            <div class="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full bg-white border-2 border-[var(--primary)] shadow-lg md:left-1/2 md:-translate-x-1/2">
+              <i data-lucide="lightbulb" class="h-5 w-5 text-[var(--primary)]"></i>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="relative grid gap-4 md:grid-cols-2 md:gap-12 md:[&>div:first-child]:col-start-2" data-reveal>
+            <div class="pl-16 md:pl-12">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--primary)]">Step 2</p>
+              <h3 class="mt-2 font-display text-2xl font-extrabold text-slate-900">Research</h3>
+              <p class="mt-2 text-slate-600">Talking to real people about how they lose, store, and share IDs.</p>
+            </div>
+            <div class="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full bg-white border-2 border-[var(--primary)] shadow-lg md:left-1/2 md:-translate-x-1/2">
+              <i data-lucide="microscope" class="h-5 w-5 text-[var(--primary)]"></i>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="relative grid gap-4 md:grid-cols-2 md:gap-12" data-reveal>
+            <div class="pl-16 md:pl-0 md:text-right md:pr-12">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--primary)]">Step 3</p>
+              <h3 class="mt-2 font-display text-2xl font-extrabold text-slate-900">Design</h3>
+              <p class="mt-2 text-slate-600">Material 3, soft glass, playful motion — one screen at a time.</p>
+            </div>
+            <div></div>
+            <div class="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full bg-white border-2 border-[var(--primary)] shadow-lg md:left-1/2 md:-translate-x-1/2">
+              <i data-lucide="palette" class="h-5 w-5 text-[var(--primary)]"></i>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="relative grid gap-4 md:grid-cols-2 md:gap-12 md:[&>div:first-child]:col-start-2" data-reveal>
+            <div class="pl-16 md:pl-12">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--primary)]">Step 4</p>
+              <h3 class="mt-2 font-display text-2xl font-extrabold text-slate-900">Development</h3>
+              <p class="mt-2 text-slate-600">Built with Flutter for a native-feeling, buttery experience.</p>
+            </div>
+            <div class="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full bg-white border-2 border-[var(--primary)] shadow-lg md:left-1/2 md:-translate-x-1/2">
+              <i data-lucide="code-2" class="h-5 w-5 text-[var(--primary)]"></i>
+            </div>
+          </div>
+          <!-- Step 5 -->
+          <div class="relative grid gap-4 md:grid-cols-2 md:gap-12" data-reveal>
+            <div class="pl-16 md:pl-0 md:text-right md:pr-12">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--primary)]">Step 5</p>
+              <h3 class="mt-2 font-display text-2xl font-extrabold text-slate-900">Testing</h3>
+              <p class="mt-2 text-slate-600">Real-world edge cases, private beta, security review.</p>
+            </div>
+            <div></div>
+            <div class="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full bg-white border-2 border-[var(--primary)] shadow-lg md:left-1/2 md:-translate-x-1/2">
+              <i data-lucide="bug" class="h-5 w-5 text-[var(--primary)]"></i>
+            </div>
+          </div>
+          <!-- Step 6 -->
+          <div class="relative grid gap-4 md:grid-cols-2 md:gap-12 md:[&>div:first-child]:col-start-2" data-reveal>
+            <div class="pl-16 md:pl-12">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--primary)]">Step 6</p>
+              <h3 class="mt-2 font-display text-2xl font-extrabold text-slate-900">Coming Soon</h3>
+              <p class="mt-2 text-slate-600">Launching on Google Play. Join the waitlist.</p>
+            </div>
+            <div class="absolute left-0 top-0 grid h-12 w-12 place-items-center rounded-full bg-white border-2 border-[var(--primary)] shadow-lg md:left-1/2 md:-translate-x-1/2">
+              <i data-lucide="party-popper" class="h-5 w-5 text-[var(--primary)]"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="relative mt-24 border-t border-border bg-white">
+    <div class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-[var(--primary)]/30 to-transparent"></div>
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-2">
+            <div class="grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--sky)]">
+              <i data-lucide="shield-check" class="h-5 w-5 text-white" style="stroke-width:2.5"></i>
+            </div>
+            <span class="font-display text-lg font-extrabold">Identiq<span class="text-gradient">X</span></span>
+          </a>
+          <p class="mt-4 max-w-sm text-sm text-muted-foreground">
+            The next-generation digital identity wallet. Secure, offline-first, and beautifully
+            designed to keep your most important documents always with you.
+          </p>
+          
+        </div>
+
+        <div>
+          <h4 class="font-display text-sm font-bold text-slate-900">Product</h4>
+          <ul class="mt-4 space-y-2">
+            <li><a href="features.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Features</a></li>
+            <li><a href="documents.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Documents</a></li>
+            <li><a href="security.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Security</a></li>
+            <li><a href="roadmap.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Roadmap</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display text-sm font-bold text-slate-900">Company</h4>
+          <ul class="mt-4 space-y-2">
+            <li><a href="about.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">About</a></li>
+            <li><a href="technology.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Technology</a></li>
+            <li><a href="download.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Download</a></li>
+          </ul>
+        </div>
+
+       
+
+      <div class="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground">
+        <p>© <span data-year></span> IdentiqX. Crafted with care. Coming soon on Google Play.</p>
+        <p class="flex items-center gap-2">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
+          Under active development
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/lucide.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

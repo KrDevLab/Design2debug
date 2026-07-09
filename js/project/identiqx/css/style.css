@@ -1,0 +1,238 @@
+/* ==========================================================================
+   IdentiqX — design tokens & custom utilities
+   (ported from the original Tailwind v4 @theme setup to plain CSS so it
+   works alongside the Tailwind CDN build)
+   ========================================================================== */
+
+:root {
+  --radius: 0.875rem;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #eef2ff;
+  --secondary-foreground: #1e293b;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #e0f2fe;
+  --accent-foreground: #0c4a6e;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2563eb;
+
+  --sky: #38bdf8;
+  --teal: #14b8a6;
+  --purple: #8b5cf6;
+  --green: #22c55e;
+  --orange: #f59e0b;
+  --surface: #ffffff;
+
+  --gradient-hero: radial-gradient(1200px 600px at 10% -10%, rgba(56, 189, 248, 0.35), transparent 60%),
+    radial-gradient(1000px 500px at 90% 0%, rgba(139, 92, 246, 0.28), transparent 55%),
+    radial-gradient(900px 500px at 50% 100%, rgba(20, 184, 166, 0.22), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+  --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #38bdf8 100%);
+  --gradient-teal: linear-gradient(135deg, #14b8a6 0%, #22c55e 100%);
+  --gradient-warm: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  --gradient-mesh: conic-gradient(from 180deg at 50% 50%, #dbeafe, #ede9fe, #ccfbf1, #fef3c7, #dbeafe);
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 24px -6px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 24px 60px -20px rgba(37, 99, 235, 0.18), 0 8px 24px -8px rgba(15, 23, 42, 0.08);
+  --shadow-glow: 0 20px 80px -20px rgba(37, 99, 235, 0.45);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 20px 40px -20px rgba(15, 23, 42, 0.12);
+
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Grotesk", ui-monospace, monospace;
+}
+
+* {
+  border-color: var(--border);
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+.font-display { font-family: var(--font-display); }
+.font-accent { font-family: var(--font-accent); }
+.font-mono { font-family: var(--font-mono); }
+
+/* Custom utilities ---------------------------------------------------- */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-purple {
+  background: var(--gradient-purple);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.bg-hero { background: var(--gradient-hero); }
+.bg-mesh { background: var(--gradient-mesh); }
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+.glass-strong {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+.shadow-card { box-shadow: var(--shadow-card); }
+.shadow-glow { box-shadow: var(--shadow-glow); }
+.tilt-card {
+  transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 400ms;
+  transform-style: preserve-3d;
+}
+.tilt-card-hover:hover {
+  transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Keyframes ------------------------------------------------------------ */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-14px) rotate(0.6deg); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes gradient-move {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 0.6; }
+  100% { transform: scale(4); opacity: 0; }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes spin-slow {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-move 8s ease infinite;
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+.animate-pulse-ring { animation: pulse-ring 2.4s cubic-bezier(0.4,0,0.6,1) infinite; }
+.animate-spin-slow { animation: spin-slow 12s linear infinite; }
+
+/* Scroll-reveal (progressive enhancement, replaces framer-motion whileInView) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(4px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+[data-reveal-stagger] > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+[data-reveal-stagger].is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-stagger].is-visible > *:nth-child(1) { transition-delay: 0ms; }
+[data-reveal-stagger].is-visible > *:nth-child(2) { transition-delay: 80ms; }
+[data-reveal-stagger].is-visible > *:nth-child(3) { transition-delay: 160ms; }
+[data-reveal-stagger].is-visible > *:nth-child(4) { transition-delay: 240ms; }
+[data-reveal-stagger].is-visible > *:nth-child(5) { transition-delay: 320ms; }
+[data-reveal-stagger].is-visible > *:nth-child(6) { transition-delay: 400ms; }
+[data-reveal-stagger].is-visible > *:nth-child(7) { transition-delay: 480ms; }
+[data-reveal-stagger].is-visible > *:nth-child(8) { transition-delay: 560ms; }
+[data-reveal-stagger].is-visible > *:nth-child(n+9) { transition-delay: 640ms; }
+
+/* Nav active-link pill */
+.nav-link { position: relative; }
+.nav-link.active { color: var(--primary); }
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 80ms linear;
+}
+
+/* FAQ accordion */
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms ease;
+}
+.faq-panel.open { grid-template-rows: 1fr; }
+.faq-panel > div { overflow: hidden; }
+.faq-chevron { transition: transform 300ms ease; }
+.faq-chevron.open { transform: rotate(180deg); }
+
+/* Hero headline lines */
+.hero-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(8px);
+  animation: hero-line-in 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes hero-line-in {
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

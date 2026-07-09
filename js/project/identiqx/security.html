@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security & Privacy — IdentiqX</title>
+  <meta name="description" content="AES-256 encryption, biometric auth, offline-first architecture, zero tracking. Learn how IdentiqX keeps your identity safe." />
+  <meta name="author" content="IdentiqX" />
+  <meta property="og:title" content="IdentiqX Security & Privacy" />
+  <meta property="og:description" content="How IdentiqX keeps your identity safe." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  />
+
+  <link rel="stylesheet" href="css/tailwind.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-background text-foreground">
+
+  <div id="scroll-progress" class="fixed top-0 left-0 right-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-[var(--primary)] via-[var(--purple)] to-[var(--teal)]"></div>
+
+  <header id="site-header" class="sticky top-0 z-50 bg-transparent transition-all duration-300">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="relative grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--sky)] shadow-glow">
+          <i data-lucide="shield-check" class="h-5 w-5 text-white" style="stroke-width:2.5"></i>
+          <span class="absolute inset-0 rounded-2xl animate-pulse-ring bg-[var(--primary)]/40"></span>
+        </div>
+        <span class="font-display text-lg font-extrabold tracking-tight">Identiq<span class="text-gradient">X</span></span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Home</a>
+        <a href="about.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">About</a>
+        <a href="features.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Features</a>
+        <a href="documents.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Documents</a>
+        <a href="security.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Security</a>
+        <a href="technology.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Technology</a>
+        <a href="roadmap.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Roadmap</a>
+        <a href="download.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Download</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="download.html" class="inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white shadow-glow hover:brightness-110 transition">
+          Get Early Access
+        </a>
+      </div>
+
+      <button id="menu-toggle" class="lg:hidden grid h-10 w-10 place-items-center rounded-xl glass-strong" aria-label="Toggle menu">
+        <i data-lucide="menu" id="icon-menu" class="h-5 w-5"></i>
+        <i data-lucide="x" id="icon-close" class="h-5 w-5 hidden"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden overflow-hidden glass-strong border-t border-border" style="max-height:0; transition:max-height 300ms ease;">
+      <div class="mx-auto max-w-7xl px-4 py-4 grid gap-1">
+        <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Home</a>
+        <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">About</a>
+        <a href="features.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Features</a>
+        <a href="documents.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Documents</a>
+        <a href="security.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Security</a>
+        <a href="technology.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Technology</a>
+        <a href="roadmap.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Roadmap</a>
+        <a href="download.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Download</a>
+        <a href="download.html" class="mt-2 text-center rounded-full bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white">Get Early Access</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="min-h-[calc(100vh-4rem)]">
+
+    <section class="relative overflow-hidden bg-hero">
+      <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute -top-40 -left-20 h-96 w-96 rounded-full bg-[var(--sky)]/25 blur-3xl animate-float-slow"></div>
+        <div class="absolute top-20 -right-20 h-96 w-96 rounded-full bg-[var(--purple)]/20 blur-3xl animate-float-slow" style="animation-delay:2s"></div>
+        <div class="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-[var(--teal)]/20 blur-3xl animate-float-slow" style="animation-delay:4s"></div>
+      </div>
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 pt-16 pb-20 lg:grid-cols-2 lg:pt-24">
+        <div data-reveal>
+          <p class="inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1.5 text-xs font-semibold text-slate-700">
+            <i data-lucide="shield-check" class="h-3.5 w-3.5 text-[var(--primary)]"></i> Trust by design
+          </p>
+          <h1 class="mt-6 font-display text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
+            Your identity, <br />
+            <span class="text-gradient-purple">absolutely private.</span>
+          </h1>
+          <p class="mt-6 text-lg text-slate-600 max-w-lg">
+            Security isn't a marketing checkbox. It's the foundation IdentiqX is built on.
+            Here's exactly how we protect what matters most.
+          </p>
+        </div>
+        <div data-reveal>
+          <div class="relative mx-auto grid aspect-square max-w-md place-items-center">
+            <div class="absolute inset-0 rounded-full bg-mesh opacity-40 blur-3xl"></div>
+            <div class="absolute inset-6 rounded-full border border-[var(--primary)]/20 animate-pulse-ring"></div>
+            <div class="absolute inset-16 rounded-full border border-[var(--purple)]/20 animate-pulse-ring" style="animation-delay:1s"></div>
+            <div class="absolute inset-28 rounded-full border border-[var(--teal)]/20 animate-pulse-ring" style="animation-delay:2s"></div>
+            <div class="relative grid h-48 w-48 place-items-center rounded-[2.5rem] bg-gradient-to-br from-[var(--primary)] via-[#3b82f6] to-[var(--purple)] shadow-glow animate-spin-slow" style="transform-style:preserve-3d">
+              <i data-lucide="shield-check" class="h-24 w-24 text-white" style="stroke-width:1.5"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="max-w-3xl mx-auto text-center" data-reveal>
+        <p class="inline-flex items-center gap-2 rounded-full border border-[var(--primary)]/20 bg-[var(--primary)]/5 px-3 py-1 text-xs font-semibold text-[var(--primary)]">
+          <span class="h-1.5 w-1.5 rounded-full bg-[var(--primary)]"></span> Eight security pillars
+        </p>
+        <h2 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+          Protection you can <span class="text-gradient">actually verify.</span>
+        </h2>
+        <p class="mt-4 text-lg text-muted-foreground">
+          Every claim below reflects how IdentiqX is architected — not what we hope to add later.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-blue-500 to-sky-400 shadow-lg"><i data-lucide="lock" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">AES-256 Encryption</h3>
+          <p class="mt-2 text-sm text-slate-600">Every stored document is encrypted at rest with 256-bit AES — the same standard trusted by governments and banks.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-400 shadow-lg"><i data-lucide="fingerprint" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Biometric Authentication</h3>
+          <p class="mt-2 text-sm text-slate-600">Unlock with fingerprint or face — powered by your device's secure enclave, never sent anywhere.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-400 shadow-lg"><i data-lucide="key-round" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">PIN Protection</h3>
+          <p class="mt-2 text-sm text-slate-600">A dedicated PIN adds a second layer, so even device unlock isn't enough to reach your vault.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-400 shadow-lg"><i data-lucide="wifi-off" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Offline Storage</h3>
+          <p class="mt-2 text-sm text-slate-600">By default, nothing leaves your device. No servers to breach, no accounts to compromise.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-rose-500 to-pink-400 shadow-lg"><i data-lucide="database" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Secure Local Database</h3>
+          <p class="mt-2 text-sm text-slate-600">Documents live in an encrypted local database with hardware-backed key storage.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-slate-800 to-slate-500 shadow-lg"><i data-lucide="eye-off" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">No Tracking</h3>
+          <p class="mt-2 text-sm text-slate-600">No analytics SDKs, no session recording, no third-party trackers. We can't see what you store.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-red-500 to-orange-500 shadow-lg"><i data-lucide="ban" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">No Ads. No Selling.</h3>
+          <p class="mt-2 text-sm text-slate-600">Your data is never sold, rented, or monetized. This is a principle, not a policy.</p>
+        </div>
+        <div class="h-full rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-400 shadow-lg"><i data-lucide="cloud" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-4 font-display text-lg font-bold text-slate-900">Future E2EE Backup</h3>
+          <p class="mt-2 text-sm text-slate-600">When cloud backup arrives, it's end-to-end encrypted and fully opt-in — you hold the keys.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <div data-reveal>
+        <div class="rounded-[2.5rem] bg-gradient-to-br from-slate-900 to-slate-800 p-10 lg:p-16 text-white shadow-glow">
+          <div class="grid gap-8 lg:grid-cols-3">
+            <div class="lg:col-span-2">
+              <h3 class="font-display text-3xl font-extrabold sm:text-4xl">A promise, in plain words.</h3>
+              <p class="mt-4 text-white/70 max-w-2xl">
+                We don't want your data. We can't read it, we won't sell it, and we don't need it
+                to run our business. IdentiqX exists so <em>you</em> own your identity — not us,
+                not advertisers, not anyone else.
+              </p>
+            </div>
+            <div class="grid gap-3 text-sm">
+              <div class="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2">
+                <div class="grid h-6 w-6 place-items-center rounded-full bg-[var(--green)]/20 text-[var(--green)]">✓</div>
+                Zero third-party trackers
+              </div>
+              <div class="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2">
+                <div class="grid h-6 w-6 place-items-center rounded-full bg-[var(--green)]/20 text-[var(--green)]">✓</div>
+                Zero ad networks
+              </div>
+              <div class="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2">
+                <div class="grid h-6 w-6 place-items-center rounded-full bg-[var(--green)]/20 text-[var(--green)]">✓</div>
+                Zero data brokers
+              </div>
+              <div class="flex items-center gap-2 rounded-xl bg-white/5 px-3 py-2">
+                <div class="grid h-6 w-6 place-items-center rounded-full bg-[var(--green)]/20 text-[var(--green)]">✓</div>
+                Zero server-side reads
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="relative mt-24 border-t border-border bg-white">
+    <div class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-[var(--primary)]/30 to-transparent"></div>
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-2">
+            <div class="grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--sky)]">
+              <i data-lucide="shield-check" class="h-5 w-5 text-white" style="stroke-width:2.5"></i>
+            </div>
+            <span class="font-display text-lg font-extrabold">Identiq<span class="text-gradient">X</span></span>
+          </a>
+          <p class="mt-4 max-w-sm text-sm text-muted-foreground">
+            The next-generation digital identity wallet. Secure, offline-first, and beautifully
+            designed to keep your most important documents always with you.
+          </p>
+          
+        </div>
+
+        <div>
+          <h4 class="font-display text-sm font-bold text-slate-900">Product</h4>
+          <ul class="mt-4 space-y-2">
+            <li><a href="features.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Features</a></li>
+            <li><a href="documents.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Documents</a></li>
+            <li><a href="security.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Security</a></li>
+            <li><a href="roadmap.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Roadmap</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display text-sm font-bold text-slate-900">Company</h4>
+          <ul class="mt-4 space-y-2">
+            <li><a href="about.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">About</a></li>
+            <li><a href="technology.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Technology</a></li>
+            <li><a href="download.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Download</a></li>
+          </ul>
+        </div>
+
+       
+
+      <div class="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground">
+        <p>© <span data-year></span> IdentiqX. Crafted with care. Coming soon on Google Play.</p>
+        <p class="flex items-center gap-2">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
+          Under active development
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/lucide.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

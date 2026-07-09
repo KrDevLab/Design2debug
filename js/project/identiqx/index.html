@@ -1,115 +1,587 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDentiqX | Secure Identity Wallet & Document Vault</title>
-    <meta name="description" content="IDentiqX is a modern digital identity wallet built to securely store, organize, and access important personal documents from one place.">
-    <meta name="keywords" content="IDentiqX, Digital Wallet, Document Vault, Identity, Secure Storage">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IdentiqX — Your Identity. Protected. Organized. Always With You.</title>
+  <meta name="description" content="Meet IdentiqX, the next-generation digital identity wallet. Securely store your most important documents in one beautifully designed app. Coming soon on Google Play." />
+  <meta name="author" content="IdentiqX" />
+  <meta property="og:title" content="IdentiqX — Digital Identity Wallet" />
+  <meta property="og:description" content="Secure, offline-first digital identity wallet. AES-256 encrypted. Coming soon on Google Play." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
 
-    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
-    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  />
 
-    <style type="text/tailwindcss">
-    @layer theme {
-        :root {
-            --primary: #6366F1;
-            --secondary: #06B6D4;
-            --accent: #8B5CF6;
-            --bg: #FAFAFA;
-            --text-main: #111827;
-        }
-    }
-
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-
-    @layer base {
-        body {
-            @apply bg-[var(--bg)] text-[var(--text-main)] font-['Inter'];
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            @apply font-['Space_Grotesk'] tracking-tight;
-        }
-        code, pre {
-            @apply font-['JetBrains_Mono'];
-        }
-    }
-
-    @layer components {
-        .glass-card {
-            @apply bg-white/70 border border-gray-200/50 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.04)];
-        }
-        .text-gradient {
-            @apply bg-clip-text text-transparent bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#06B6D4];
-        }
-        .btn-primary {
-            @apply px-6 py-3 rounded-full bg-slate-900 text-white font-semibold hover:scale-105 transition-transform duration-300 flex items-center gap-2;
-        }
-        .btn-secondary {
-            @apply px-6 py-3 rounded-full glass-card hover:bg-slate-50 transition-all duration-300 flex items-center gap-2 text-slate-700;
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @layer utilities {
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        .animate-pulse-slow {
-            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-    }
-
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-        100% { transform: translateY(0px); }
-    }
-    
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-        background: #FAFAFA;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #CBD5E1;
-        border-radius: 5px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: #94A3B8;
-    }
-    </style>
+  <link rel="stylesheet" href="css/tailwind.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-    <div id="root"></div>
-    
-    <!-- Scripts -->
-    <script type="text/babel" src="utils/useScrollReveal.js"></script>
-    <script type="text/babel" src="components/Navigation.js"></script>
-    <script type="text/babel" src="components/Hero.js"></script>
-    <script type="text/babel" src="components/Features.js"></script>
-    <script type="text/babel" src="components/TechStack.js"></script>
-    <script type="text/babel" src="app.js"></script>
+<body class="bg-background text-foreground">
+
+  <div id="scroll-progress" class="fixed top-0 left-0 right-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-[var(--primary)] via-[var(--purple)] to-[var(--teal)]"></div>
+
+  <header id="site-header" class="sticky top-0 z-50 bg-transparent transition-all duration-300">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="relative grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--sky)] shadow-glow">
+          <i data-lucide="shield-check" class="h-5 w-5 text-white" style="stroke-width:2.5"></i>
+          <span class="absolute inset-0 rounded-2xl animate-pulse-ring bg-[var(--primary)]/40"></span>
+        </div>
+        <span class="font-display text-lg font-extrabold tracking-tight">Identiq<span class="text-gradient">X</span></span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Home</a>
+        <a href="about.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">About</a>
+        <a href="features.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Features</a>
+        <a href="documents.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Documents</a>
+        <a href="security.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Security</a>
+        <a href="technology.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Technology</a>
+        <a href="roadmap.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Roadmap</a>
+        <a href="download.html" data-nav-link class="nav-link px-3 py-2 text-sm font-medium rounded-full transition-colors text-slate-600 hover:text-slate-900">Download</a>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="download.html" class="inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white shadow-glow hover:brightness-110 transition">
+          Get Early Access
+        </a>
+      </div>
+
+      <button id="menu-toggle" class="lg:hidden grid h-10 w-10 place-items-center rounded-xl glass-strong" aria-label="Toggle menu">
+        <i data-lucide="menu" id="icon-menu" class="h-5 w-5"></i>
+        <i data-lucide="x" id="icon-close" class="h-5 w-5 hidden"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden overflow-hidden glass-strong border-t border-border" style="max-height:0; transition:max-height 300ms ease;">
+      <div class="mx-auto max-w-7xl px-4 py-4 grid gap-1">
+        <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Home</a>
+        <a href="about.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">About</a>
+        <a href="features.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Features</a>
+        <a href="documents.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Documents</a>
+        <a href="security.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Security</a>
+        <a href="technology.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Technology</a>
+        <a href="roadmap.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Roadmap</a>
+        <a href="download.html" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-white">Download</a>
+        <a href="download.html" class="mt-2 text-center rounded-full bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-white">Get Early Access</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="min-h-[calc(100vh-4rem)]">
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-hero">
+      <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div class="absolute -top-40 -left-20 h-96 w-96 rounded-full bg-[var(--sky)]/25 blur-3xl animate-float-slow"></div>
+        <div class="absolute top-20 -right-20 h-96 w-96 rounded-full bg-[var(--purple)]/20 blur-3xl animate-float-slow" style="animation-delay:2s"></div>
+        <div class="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-[var(--teal)]/20 blur-3xl animate-float-slow" style="animation-delay:4s"></div>
+      </div>
+
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-24 pt-16 lg:grid-cols-2 lg:gap-8 lg:px-8 lg:pb-32 lg:pt-24">
+        <div>
+          <div class="hero-line inline-flex items-center gap-2 rounded-full glass-strong px-3 py-1.5 text-xs font-semibold text-slate-700" style="animation-delay:0s">
+            <span class="grid h-4 w-4 place-items-center rounded-full bg-[var(--primary)]">
+              <i data-lucide="sparkles" class="h-2.5 w-2.5 text-white"></i>
+            </span>
+            Coming soon on Google Play
+          </div>
+
+          <h1 class="mt-6 font-display text-5xl font-extrabold leading-[1.05] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
+            <span class="hero-line" style="animation-delay:.15s">Your Identity.</span>
+            <span class="hero-line" style="animation-delay:.27s">Protected.</span>
+            <span class="hero-line" style="animation-delay:.39s">Organized.</span>
+            <span class="hero-line text-gradient" style="animation-delay:.51s">Always With You.</span>
+          </h1>
+
+          <p class="hero-line mt-6 max-w-xl text-lg text-slate-600" style="animation-delay:.7s">
+            Meet <span class="font-semibold text-slate-900">IdentiqX</span>, the
+            next-generation digital identity wallet that securely stores your most important
+            documents in one beautifully designed app.
+          </p>
+
+          <div class="hero-line mt-8 flex flex-wrap gap-3" style="animation-delay:.85s">
+            <a href="download.html" class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:scale-[1.02]">
+              <span class="relative z-10">🚀 Coming Soon on Google Play</span>
+              <i data-lucide="arrow-right" class="relative z-10 h-4 w-4 transition group-hover:translate-x-1"></i>
+              <span class="absolute inset-0 -z-0 bg-gradient-to-r from-[var(--primary)] to-[var(--purple)] opacity-0 transition group-hover:opacity-100"></span>
+            </a>
+            <a href="features.html" class="inline-flex items-center gap-2 rounded-full glass-strong px-6 py-3.5 text-sm font-semibold text-slate-900 hover:bg-white">
+              📖 Explore Features
+            </a>
+          </div>
+
+          <div class="hero-line mt-10 flex flex-wrap gap-2" style="animation-delay:1.1s">
+            <div class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm">
+              <i data-lucide="wifi-off" class="h-3.5 w-3.5 text-[var(--primary)]"></i> Offline First
+            </div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm">
+              <i data-lucide="shield-check" class="h-3.5 w-3.5 text-[var(--primary)]"></i> Privacy First
+            </div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm">
+              <i data-lucide="lock" class="h-3.5 w-3.5 text-[var(--primary)]"></i> AES-256 Encryption
+            </div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm">
+              <i data-lucide="sparkles" class="h-3.5 w-3.5 text-[var(--primary)]"></i> Flutter Powered
+            </div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm">
+              <i data-lucide="star" class="h-3.5 w-3.5 text-[var(--primary)]"></i> Material 3
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div data-phone-tilt class="relative mx-auto w-full max-w-sm" style="perspective:1200px">
+  <!-- floating cards -->
+  <div class="absolute -left-16 top-10 hidden sm:block">
+    <div class="glass-strong flex items-center gap-2 rounded-2xl px-3 py-2 shadow-lg animate-float" style="animation-delay:0s">
+      <div class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-blue-500 to-sky-400"><i data-lucide="id-card" class="h-5 w-5 text-white"></i></div>
+      <div><p class="text-[11px] font-bold text-slate-900">Aadhaar</p><p class="text-[9px] text-slate-500">Verified</p></div>
+    </div>
+  </div>
+  <div class="absolute -right-14 top-32 hidden sm:block">
+    <div class="glass-strong flex items-center gap-2 rounded-2xl px-3 py-2 shadow-lg animate-float" style="animation-delay:1.2s">
+      <div class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-400"><i data-lucide="graduation-cap" class="h-5 w-5 text-white"></i></div>
+      <div><p class="text-[11px] font-bold text-slate-900">Degree</p><p class="text-[9px] text-slate-500">2024</p></div>
+    </div>
+  </div>
+  <div class="absolute -left-10 bottom-24 hidden sm:block">
+    <div class="glass-strong flex items-center gap-2 rounded-2xl px-3 py-2 shadow-lg animate-float" style="animation-delay:2.1s">
+      <div class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-rose-500 to-orange-400"><i data-lucide="heart-pulse" class="h-5 w-5 text-white"></i></div>
+      <div><p class="text-[11px] font-bold text-slate-900">Medical</p><p class="text-[9px] text-slate-500">Insurance</p></div>
+    </div>
+  </div>
+  <div class="absolute -right-16 bottom-8 hidden sm:block">
+    <div class="glass-strong flex items-center gap-2 rounded-2xl px-3 py-2 shadow-lg animate-float" style="animation-delay:.6s">
+      <div class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-teal-500 to-emerald-400"><i data-lucide="car" class="h-5 w-5 text-white"></i></div>
+      <div><p class="text-[11px] font-bold text-slate-900">RC Book</p><p class="text-[9px] text-slate-500">Vehicle</p></div>
+    </div>
+  </div>
+
+  <div data-phone-inner class="animate-float" style="transform-style:preserve-3d; transition: transform 120ms ease-out;">
+    <div class="relative rounded-[3rem] bg-slate-900 p-3 shadow-glow">
+      <div class="absolute left-1/2 top-3 z-10 h-6 w-24 -translate-x-1/2 rounded-full bg-slate-950"></div>
+      <div class="relative overflow-hidden rounded-[2.4rem] bg-white aspect-[9/19.5]">
+        <div class="flex h-full flex-col bg-gradient-to-b from-[#f8fafc] to-white">
+          <div class="px-5 pt-10">
+            <div class="flex items-center justify-between text-[10px] font-medium text-slate-500">
+              <span>9:41</span>
+              <span>●●● 5G</span>
+            </div>
+            <div class="mt-4 flex items-center gap-3">
+              <div class="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--sky)] text-white font-bold text-sm">AK</div>
+              <div>
+                <p class="text-[10px] text-slate-500">Welcome back</p>
+                <p class="text-sm font-bold text-slate-900">Arjun Kumar</p>
+              </div>
+              <div class="ml-auto grid h-9 w-9 place-items-center rounded-full bg-white shadow-sm">
+                <i data-lucide="fingerprint" class="h-4 w-4 text-[var(--primary)]"></i>
+              </div>
+            </div>
+
+            <div class="mt-5 rounded-2xl bg-gradient-to-br from-[var(--primary)] via-[#3b82f6] to-[var(--sky)] p-4 text-white shadow-lg">
+              <div class="flex items-center gap-2 text-[10px] font-medium opacity-80">
+                <i data-lucide="shield-check" class="h-3 w-3"></i> AES-256 Encrypted
+              </div>
+              <p class="mt-2 text-2xl font-extrabold tracking-tight">23</p>
+              <p class="text-[10px] opacity-80">Documents secured offline</p>
+            </div>
+
+            <p class="mt-5 text-[11px] font-semibold text-slate-500">Categories</p>
+            <div class="mt-2 grid grid-cols-3 gap-2">
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-blue-500 to-sky-400"><i data-lucide="id-card" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Identity</p><p class="text-[9px] text-slate-500">6 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-violet-500 to-purple-400"><i data-lucide="graduation-cap" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Education</p><p class="text-[9px] text-slate-500">4 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-rose-500 to-orange-400"><i data-lucide="heart-pulse" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Medical</p><p class="text-[9px] text-slate-500">3 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-400"><i data-lucide="wallet" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Financial</p><p class="text-[9px] text-slate-500">5 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-400"><i data-lucide="home" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Property</p><p class="text-[9px] text-slate-500">2 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-400"><i data-lucide="car" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Vehicle</p><p class="text-[9px] text-slate-500">3 files</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="max-w-3xl mx-auto text-center" data-reveal>
+        <p class="inline-flex items-center gap-2 rounded-full border border-[var(--primary)]/20 bg-[var(--primary)]/5 px-3 py-1 text-xs font-semibold text-[var(--primary)]">
+          <span class="h-1.5 w-1.5 rounded-full bg-[var(--primary)]"></span> Why IdentiqX?
+        </p>
+        <h2 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+          Everything your identity needs, <span class="text-gradient">in one place.</span>
+        </h2>
+        <p class="mt-4 text-lg text-muted-foreground">
+          A private, offline-first vault built with obsessive craft. No ads. No tracking. Just your documents, exactly where you need them.
+        </p>
+      </div>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
+        <div class="group relative h-full overflow-hidden rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-blue-500 to-sky-400 shadow-lg"><i data-lucide="wifi-off" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-5 font-display text-xl font-bold text-slate-900">Offline First</h3>
+          <p class="mt-2 text-sm text-slate-600">Every document is stored securely on your device. Works with or without internet.</p>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-[var(--sky)]/20 to-[var(--purple)]/20 opacity-0 blur-2xl transition group-hover:opacity-100"></div>
+        </div>
+        <div class="group relative h-full overflow-hidden rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-400 shadow-lg"><i data-lucide="lock" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-5 font-display text-xl font-bold text-slate-900">AES-256 Encryption</h3>
+          <p class="mt-2 text-sm text-slate-600">Military-grade encryption keeps your data safe. Only you hold the keys.</p>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-[var(--sky)]/20 to-[var(--purple)]/20 opacity-0 blur-2xl transition group-hover:opacity-100"></div>
+        </div>
+        <div class="group relative h-full overflow-hidden rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-400 shadow-lg"><i data-lucide="fingerprint" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-5 font-display text-xl font-bold text-slate-900">Biometric Login</h3>
+          <p class="mt-2 text-sm text-slate-600">Unlock with fingerprint, face, or PIN. Zero friction, maximum security.</p>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-[var(--sky)]/20 to-[var(--purple)]/20 opacity-0 blur-2xl transition group-hover:opacity-100"></div>
+        </div>
+        <div class="group relative h-full overflow-hidden rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-400 shadow-lg"><i data-lucide="search" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-5 font-display text-xl font-bold text-slate-900">Smart Search</h3>
+          <p class="mt-2 text-sm text-slate-600">Find any document in seconds with instant search across every category.</p>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-[var(--sky)]/20 to-[var(--purple)]/20 opacity-0 blur-2xl transition group-hover:opacity-100"></div>
+        </div>
+        <div class="group relative h-full overflow-hidden rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-rose-500 to-pink-400 shadow-lg"><i data-lucide="heart" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-5 font-display text-xl font-bold text-slate-900">Beautifully Designed</h3>
+          <p class="mt-2 text-sm text-slate-600">Material 3 design language. Every screen crafted with obsessive attention to detail.</p>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-[var(--sky)]/20 to-[var(--purple)]/20 opacity-0 blur-2xl transition group-hover:opacity-100"></div>
+        </div>
+        <div class="group relative h-full overflow-hidden rounded-3xl border border-border bg-white p-6 shadow-card tilt-card tilt-card-hover">
+          <div class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-400 shadow-lg"><i data-lucide="cloud" class="h-6 w-6 text-white"></i></div>
+          <h3 class="mt-5 font-display text-xl font-bold text-slate-900">Cloud Backup (Soon)</h3>
+          <p class="mt-2 text-sm text-slate-600">End-to-end encrypted backups you own. Sync across devices when you're ready.</p>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-[var(--sky)]/20 to-[var(--purple)]/20 opacity-0 blur-2xl transition group-hover:opacity-100"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div data-reveal>
+        <div class="rounded-[2rem] border border-border bg-gradient-to-br from-white via-white to-[var(--secondary)] p-8 lg:p-12 shadow-card">
+          <div class="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+            <div>
+              <p class="inline-flex items-center gap-2 rounded-full bg-[var(--primary)]/10 px-3 py-1 text-xs font-semibold text-[var(--primary)]">
+                <span class="h-1.5 w-1.5 rounded-full bg-[var(--primary)]"></span> 40+ document types
+              </p>
+              <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                Organized by <span class="text-gradient">what matters</span> to your life.
+              </h2>
+              <p class="mt-4 text-slate-600">
+                Identity, education, medical, financial, property, vehicle and family — every
+                category is designed with beautiful icons and instant access.
+              </p>
+              <a href="documents.html" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--primary)] hover:gap-3 transition-all">
+                Explore all documents <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              </a>
+            </div>
+            <div class="grid grid-cols-4 gap-3">
+              <div class="group aspect-square rounded-2xl bg-white p-3 shadow-sm border border-slate-100 hover:shadow-lg transition">
+                <div class="grid h-full w-full place-items-center rounded-xl bg-gradient-to-br from-blue-500 to-sky-400 text-white"><i data-lucide="id-card" class="h-6 w-6"></i></div>
+                <p class="mt-2 text-center text-[10px] font-bold text-slate-700 truncate">Identity</p>
+              </div>
+              <div class="group aspect-square rounded-2xl bg-white p-3 shadow-sm border border-slate-100 hover:shadow-lg transition">
+                <div class="grid h-full w-full place-items-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-400 text-white"><i data-lucide="graduation-cap" class="h-6 w-6"></i></div>
+                <p class="mt-2 text-center text-[10px] font-bold text-slate-700 truncate">Education</p>
+              </div>
+              <div class="group aspect-square rounded-2xl bg-white p-3 shadow-sm border border-slate-100 hover:shadow-lg transition">
+                <div class="grid h-full w-full place-items-center rounded-xl bg-gradient-to-br from-rose-500 to-orange-400 text-white"><i data-lucide="heart-pulse" class="h-6 w-6"></i></div>
+                <p class="mt-2 text-center text-[10px] font-bold text-slate-700 truncate">Medical</p>
+              </div>
+              <div class="group aspect-square rounded-2xl bg-white p-3 shadow-sm border border-slate-100 hover:shadow-lg transition">
+                <div class="grid h-full w-full place-items-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-400 text-white"><i data-lucide="wallet" class="h-6 w-6"></i></div>
+                <p class="mt-2 text-center text-[10px] font-bold text-slate-700 truncate">Financial</p>
+              </div>
+              <div class="group aspect-square rounded-2xl bg-white p-3 shadow-sm border border-slate-100 hover:shadow-lg transition">
+                <div class="grid h-full w-full place-items-center rounded-xl bg-gradient-to-br from-amber-500 to-yellow-400 text-white"><i data-lucide="home" class="h-6 w-6"></i></div>
+                <p class="mt-2 text-center text-[10px] font-bold text-slate-700 truncate">Property</p>
+              </div>
+              <div class="group aspect-square rounded-2xl bg-white p-3 shadow-sm border border-slate-100 hover:shadow-lg transition">
+                <div class="grid h-full w-full place-items-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-400 text-white"><i data-lucide="car" class="h-6 w-6"></i></div>
+                <p class="mt-2 text-center text-[10px] font-bold text-slate-700 truncate">Vehicle</p>
+              </div>
+              <div class="group aspect-square rounded-2xl bg-white p-3 shadow-sm border border-slate-100 hover:shadow-lg transition">
+                <div class="grid h-full w-full place-items-center rounded-xl bg-gradient-to-br from-pink-500 to-rose-400 text-white"><i data-lucide="users" class="h-6 w-6"></i></div>
+                <p class="mt-2 text-center text-[10px] font-bold text-slate-700 truncate">Family</p>
+              </div>
+              <div class="group aspect-square rounded-2xl bg-white p-3 shadow-sm border border-slate-100 hover:shadow-lg transition">
+                <div class="grid h-full w-full place-items-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-400 text-white"><i data-lucide="scan-line" class="h-6 w-6"></i></div>
+                <p class="mt-2 text-center text-[10px] font-bold text-slate-700 truncate">Scanner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY HIGHLIGHT -->
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div data-reveal>
+          <div class="relative">
+            <div class="absolute inset-0 -z-10 bg-mesh opacity-40 blur-3xl rounded-[3rem]"></div>
+            <div class="relative mx-auto grid aspect-square max-w-md place-items-center rounded-[3rem] glass-strong shadow-glow">
+              <div class="absolute inset-8 rounded-full border border-[var(--primary)]/20 animate-pulse-ring"></div>
+              <div class="absolute inset-16 rounded-full border border-[var(--purple)]/20 animate-pulse-ring" style="animation-delay:1s"></div>
+              <div class="relative grid h-40 w-40 place-items-center rounded-3xl bg-gradient-to-br from-[var(--primary)] to-[var(--purple)] shadow-glow">
+                <i data-lucide="shield-check" class="h-20 w-20 text-white" style="stroke-width:1.5"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div data-reveal>
+            <p class="inline-flex items-center gap-2 rounded-full border border-[var(--primary)]/20 bg-[var(--primary)]/5 px-3 py-1 text-xs font-semibold text-[var(--primary)]">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--primary)]"></span> Security highlights
+            </p>
+            <h2 class="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+              Built like a vault. <br />
+              <span class="text-gradient-purple">Feels like an app.</span>
+            </h2>
+            <p class="mt-4 text-lg text-muted-foreground">
+              Your documents never leave your device without your permission. Encryption at rest, biometric locks, and zero tracking by design.
+            </p>
+          </div>
+          <ul class="mt-8 grid gap-4" data-reveal-stagger>
+            <li class="flex items-start gap-3 text-slate-700"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--green)]"></i><span>AES-256 encryption for every stored file</span></li>
+            <li class="flex items-start gap-3 text-slate-700"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--green)]"></i><span>Biometric + PIN dual authentication</span></li>
+            <li class="flex items-start gap-3 text-slate-700"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--green)]"></i><span>Zero tracking, zero ads, zero data selling</span></li>
+            <li class="flex items-start gap-3 text-slate-700"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--green)]"></i><span>Local database with secure key storage</span></li>
+            <li class="flex items-start gap-3 text-slate-700"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 flex-shrink-0 text-[var(--green)]"></i><span>Future E2EE cloud backup — opt-in only</span></li>
+          </ul>
+          <a href="security.html" class="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 transition">
+            Read our security promise <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div class="grid gap-6 rounded-[2rem] border border-border bg-white p-8 md:grid-cols-4 lg:p-12 shadow-card">
+        <div class="text-center" data-reveal>
+          <p class="font-display text-5xl font-extrabold text-gradient"><span data-counter="40" data-suffix="+">0</span></p>
+          <p class="mt-2 text-sm font-medium text-slate-600">Document types</p>
+        </div>
+        <div class="text-center" data-reveal>
+          <p class="font-display text-5xl font-extrabold text-gradient"><span data-counter="256" data-suffix="-bit">0</span></p>
+          <p class="mt-2 text-sm font-medium text-slate-600">AES encryption</p>
+        </div>
+        <div class="text-center" data-reveal>
+          <p class="font-display text-5xl font-extrabold text-gradient"><span data-counter="100" data-suffix="%">0</span></p>
+          <p class="mt-2 text-sm font-medium text-slate-600">Offline capable</p>
+        </div>
+        <div class="text-center" data-reveal>
+          <p class="font-display text-5xl font-extrabold text-gradient"><span data-counter="0" data-suffix="">0</span></p>
+          <p class="mt-2 text-sm font-medium text-slate-600">Tracking. Ever.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mx-auto max-w-7xl px-6 pb-32 lg:px-8">
+      <div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-slate-900 via-slate-800 to-[#0b1a3a] p-10 lg:p-16 text-white shadow-glow">
+        <div class="absolute inset-0 bg-mesh opacity-20 mix-blend-overlay"></div>
+        <div class="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-[var(--primary)]/40 blur-3xl"></div>
+        <div class="relative grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--sky)]">Get ready for launch</p>
+            <h2 class="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
+              Be the first to carry your identity <br />
+              <span class="text-gradient">in your pocket.</span>
+            </h2>
+            <p class="mt-4 max-w-lg text-white/70">
+              Join the waitlist and we'll notify you the moment IdentiqX lands on Google Play.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="download.html" class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:scale-[1.02] transition">
+                Join the waitlist <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              </a>
+              <a href="about.html" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                Read the story
+              </a>
+            </div>
+          </div>
+          <div class="relative hidden lg:block">
+            <div class="mx-auto w-52">
+              <div data-phone-tilt class="relative mx-auto w-full max-w-sm" style="perspective:1200px">
+  <!-- floating cards -->
+  <div class="absolute -left-16 top-10 hidden sm:block">
+    <div class="glass-strong flex items-center gap-2 rounded-2xl px-3 py-2 shadow-lg animate-float" style="animation-delay:0s">
+      <div class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-blue-500 to-sky-400"><i data-lucide="id-card" class="h-5 w-5 text-white"></i></div>
+      <div><p class="text-[11px] font-bold text-slate-900">Aadhaar</p><p class="text-[9px] text-slate-500">Verified</p></div>
+    </div>
+  </div>
+  <div class="absolute -right-14 top-32 hidden sm:block">
+    <div class="glass-strong flex items-center gap-2 rounded-2xl px-3 py-2 shadow-lg animate-float" style="animation-delay:1.2s">
+      <div class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-400"><i data-lucide="graduation-cap" class="h-5 w-5 text-white"></i></div>
+      <div><p class="text-[11px] font-bold text-slate-900">Degree</p><p class="text-[9px] text-slate-500">2024</p></div>
+    </div>
+  </div>
+  <div class="absolute -left-10 bottom-24 hidden sm:block">
+    <div class="glass-strong flex items-center gap-2 rounded-2xl px-3 py-2 shadow-lg animate-float" style="animation-delay:2.1s">
+      <div class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-rose-500 to-orange-400"><i data-lucide="heart-pulse" class="h-5 w-5 text-white"></i></div>
+      <div><p class="text-[11px] font-bold text-slate-900">Medical</p><p class="text-[9px] text-slate-500">Insurance</p></div>
+    </div>
+  </div>
+  <div class="absolute -right-16 bottom-8 hidden sm:block">
+    <div class="glass-strong flex items-center gap-2 rounded-2xl px-3 py-2 shadow-lg animate-float" style="animation-delay:.6s">
+      <div class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-teal-500 to-emerald-400"><i data-lucide="car" class="h-5 w-5 text-white"></i></div>
+      <div><p class="text-[11px] font-bold text-slate-900">RC Book</p><p class="text-[9px] text-slate-500">Vehicle</p></div>
+    </div>
+  </div>
+
+  <div data-phone-inner class="animate-float" style="transform-style:preserve-3d; transition: transform 120ms ease-out;">
+    <div class="relative rounded-[3rem] bg-slate-900 p-3 shadow-glow">
+      <div class="absolute left-1/2 top-3 z-10 h-6 w-24 -translate-x-1/2 rounded-full bg-slate-950"></div>
+      <div class="relative overflow-hidden rounded-[2.4rem] bg-white aspect-[9/19.5]">
+        <div class="flex h-full flex-col bg-gradient-to-b from-[#f8fafc] to-white">
+          <div class="px-5 pt-10">
+            <div class="flex items-center justify-between text-[10px] font-medium text-slate-500">
+              <span>9:41</span>
+              <span>●●● 5G</span>
+            </div>
+            <div class="mt-4 flex items-center gap-3">
+              <div class="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[var(--primary)] to-[var(--sky)] text-white font-bold text-sm">AK</div>
+              <div>
+                <p class="text-[10px] text-slate-500">Welcome back</p>
+                <p class="text-sm font-bold text-slate-900">Arjun Kumar</p>
+              </div>
+              <div class="ml-auto grid h-9 w-9 place-items-center rounded-full bg-white shadow-sm">
+                <i data-lucide="fingerprint" class="h-4 w-4 text-[var(--primary)]"></i>
+              </div>
+            </div>
+
+            <div class="mt-5 rounded-2xl bg-gradient-to-br from-[var(--primary)] via-[#3b82f6] to-[var(--sky)] p-4 text-white shadow-lg">
+              <div class="flex items-center gap-2 text-[10px] font-medium opacity-80">
+                <i data-lucide="shield-check" class="h-3 w-3"></i> AES-256 Encrypted
+              </div>
+              <p class="mt-2 text-2xl font-extrabold tracking-tight">23</p>
+              <p class="text-[10px] opacity-80">Documents secured offline</p>
+            </div>
+
+            <p class="mt-5 text-[11px] font-semibold text-slate-500">Categories</p>
+            <div class="mt-2 grid grid-cols-3 gap-2">
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-blue-500 to-sky-400"><i data-lucide="id-card" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Identity</p><p class="text-[9px] text-slate-500">6 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-violet-500 to-purple-400"><i data-lucide="graduation-cap" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Education</p><p class="text-[9px] text-slate-500">4 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-rose-500 to-orange-400"><i data-lucide="heart-pulse" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Medical</p><p class="text-[9px] text-slate-500">3 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-400"><i data-lucide="wallet" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Financial</p><p class="text-[9px] text-slate-500">5 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-400"><i data-lucide="home" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Property</p><p class="text-[9px] text-slate-500">2 files</p>
+              </div>
+              <div class="rounded-xl bg-white p-2.5 shadow-sm border border-slate-100">
+                <div class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-400"><i data-lucide="car" class="h-4 w-4 text-white"></i></div>
+                <p class="mt-2 text-[10px] font-bold text-slate-900">Vehicle</p><p class="text-[9px] text-slate-500">3 files</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="relative mt-24 border-t border-border bg-white">
+    <div class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-[var(--primary)]/30 to-transparent"></div>
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-2">
+            <div class="grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--sky)]">
+              <i data-lucide="shield-check" class="h-5 w-5 text-white" style="stroke-width:2.5"></i>
+            </div>
+            <span class="font-display text-lg font-extrabold">Identiq<span class="text-gradient">X</span></span>
+          </a>
+          <p class="mt-4 max-w-sm text-sm text-muted-foreground">
+            The next-generation digital identity wallet. Secure, offline-first, and beautifully
+            designed to keep your most important documents always with you.
+          </p>
+          
+        </div>
+
+        <div>
+          <h4 class="font-display text-sm font-bold text-slate-900">Product</h4>
+          <ul class="mt-4 space-y-2">
+            <li><a href="features.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Features</a></li>
+            <li><a href="documents.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Documents</a></li>
+            <li><a href="security.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Security</a></li>
+            <li><a href="roadmap.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Roadmap</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display text-sm font-bold text-slate-900">Company</h4>
+          <ul class="mt-4 space-y-2">
+            <li><a href="about.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">About</a></li>
+            <li><a href="technology.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Technology</a></li>
+            <li><a href="download.html" class="text-sm text-slate-600 hover:text-[var(--primary)] transition">Download</a></li>
+          </ul>
+        </div>
+
+       
+
+      <div class="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground">
+        <p>© <span data-year></span> IdentiqX. Crafted with care. Coming soon on Google Play.</p>
+        <p class="flex items-center gap-2">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
+          Under active development
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/lucide.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
