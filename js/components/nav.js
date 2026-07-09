@@ -94,7 +94,7 @@ window.renderSiteNav = function renderSiteNav(containerId) {
   <img
   src="js/assets/logo.svg"
   alt="Design2Debug Logo"
-  width="36"
+  width="24"
   height="36"
   loading="eager"
   decoding="async">

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Design2Debug</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-icon { transform: rotate(45deg); }
+</style>
+</head>
+<body class="bg-white text-slate-900">
+
+<header class="border-b border-slate-200" style="background-color: whitesmoke;">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+    <a href="index.html" class="flex items-center gap-2">
+      <!-- TODO: replace with your actual logo file path -->
+      <img src="js/assets/logo.png" alt="Design2Debug logo" class="h-9 w-9 rounded-md object-contain">
+      <span class="flex flex-col leading-tight">
+        <span class="text-base font-bold text-slate-900">Design2Debug</span>
+        <span class="text-[10px] font-medium tracking-widest text-slate-500">DESIGN &bull; DEVELOP &bull; DEPLOY</span>
+      </span>
+    </a>
+    <nav class="hidden items-center gap-6 text-sm text-slate-600 sm:flex">
+      <a href="index.html" class="hover:text-slate-900">Home</a>
+      <a href="index.html#services" class="inline-flex items-center gap-1 hover:text-slate-900">
+        Services <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
+      </a>
+      <a href="projects.html" class="hover:text-slate-900">Projects</a>
+      <a href="blog.html" class="hover:text-slate-900">Blog</a>
+      <a href="faq.html" class="font-medium text-slate-900">FAQ</a>
+      <a href="contact.html" class="hover:text-slate-900">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="mx-auto max-w-3xl px-6 py-10">
+  <div class="text-xs font-semibold uppercase tracking-wide text-slate-400">FAQ</div>
+  <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Frequently asked questions</h1>
+  <p class="mt-2 text-sm text-slate-500">
+    Common questions before starting a project. Can't find yours? <a href="contact.html" class="text-slate-900 underline underline-offset-2">Send it over.</a>
+  </p>
+
+  <div class="mt-6 divide-y divide-slate-200 rounded-lg border border-slate-200">
+
+    <details class="group p-4" open>
+      <summary class="flex items-center justify-between gap-4">
+        <span class="text-sm font-medium sm:text-base">What do you actually build — apps, sites, or both?</span>
+        <span class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition-transform duration-200">
+          <i data-lucide="plus" class="h-3.5 w-3.5"></i>
+        </span>
+      </summary>
+      <p class="mt-3 text-sm leading-relaxed text-slate-500">
+        Both. Most projects are Flutter Android apps or marketing/product websites, plus the UI/UX design behind them. One person handles design, build, and debugging — nothing gets lost in handoff.
+      </p>
+    </details>
+
+    <details class="group p-4">
+      <summary class="flex items-center justify-between gap-4">
+        <span class="text-sm font-medium sm:text-base">How long does a typical project take?</span>
+        <span class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition-transform duration-200">
+          <i data-lucide="plus" class="h-3.5 w-3.5"></i>
+        </span>
+      </summary>
+      <p class="mt-3 text-sm leading-relaxed text-slate-500">
+        Small sites and single-screen apps usually run 2–3 weeks. Fuller apps or multi-page products run 4–8 weeks depending on scope, with an estimate shared before anything starts.
+      </p>
+    </details>
+
+    <details class="group p-4">
+      <summary class="flex items-center justify-between gap-4">
+        <span class="text-sm font-medium sm:text-base">What's the process from first message to launch?</span>
+        <span class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition-transform duration-200">
+          <i data-lucide="plus" class="h-3.5 w-3.5"></i>
+        </span>
+      </summary>
+      <p class="mt-3 text-sm leading-relaxed text-slate-500">
+        A short discovery chat, then a scope and quote. Once approved: design screens, a build phase with check-ins, then testing and launch — with working screens shown early.
+      </p>
+    </details>
+
+    <details class="group p-4">
+      <summary class="flex items-center justify-between gap-4">
+        <span class="text-sm font-medium sm:text-base">How much does a project cost?</span>
+        <span class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition-transform duration-200">
+          <i data-lucide="plus" class="h-3.5 w-3.5"></i>
+        </span>
+      </summary>
+      <p class="mt-3 text-sm leading-relaxed text-slate-500">
+        It depends on scope and screen count. Send a short description of what you're building and you'll get a fixed quote, not an hourly guess.
+      </p>
+    </details>
+
+    <details class="group p-4">
+      <summary class="flex items-center justify-between gap-4">
+        <span class="text-sm font-medium sm:text-base">Do you offer support after launch?</span>
+        <span class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition-transform duration-200">
+          <i data-lucide="plus" class="h-3.5 w-3.5"></i>
+        </span>
+      </summary>
+      <p class="mt-3 text-sm leading-relaxed text-slate-500">
+        Yes — every project includes a fixed window of post-launch fixes at no extra cost, with ongoing support available on a simple monthly or per-request basis after that.
+      </p>
+    </details>
+
+    <details class="group p-4">
+      <summary class="flex items-center justify-between gap-4">
+        <span class="text-sm font-medium sm:text-base">How many rounds of revisions are included?</span>
+        <span class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition-transform duration-200">
+          <i data-lucide="plus" class="h-3.5 w-3.5"></i>
+        </span>
+      </summary>
+      <p class="mt-3 text-sm leading-relaxed text-slate-500">
+        Two structured rounds of feedback are built into every design and build phase. Extra rounds are quoted separately, but small tweaks along the way are handled as normal.
+      </p>
+    </details>
+
+    <details class="group p-4">
+      <summary class="flex items-center justify-between gap-4">
+        <span class="text-sm font-medium sm:text-base">What do you need from me to get started?</span>
+        <span class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-slate-200 text-slate-500 transition-transform duration-200">
+          <i data-lucide="plus" class="h-3.5 w-3.5"></i>
+        </span>
+      </summary>
+      <p class="mt-3 text-sm leading-relaxed text-slate-500">
+        A rough idea is enough — a sentence, a sketch, or a link you like. Existing assets or copy help speed things up, but nothing polished is required to start.
+      </p>
+    </details>
+
+  </div>
+
+  <div class="mt-8 flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50 px-5 py-4">
+    <div>
+      <div class="text-sm font-semibold text-slate-900">Still have a question?</div>
+      <div class="text-sm text-slate-500">Replies usually land within 24 hours.</div>
+    </div>
+    <a href="contact.html" class="inline-flex items-center gap-1.5 rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
+      Say hello
+      <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i>
+    </a>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="footer.js"></script>
+<script>
+  renderSiteFooter("site-footer");
+  if (window.lucide) lucide.createIcons();
+</script>
+
+</body>
+</html>

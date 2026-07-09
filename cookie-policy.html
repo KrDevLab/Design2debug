@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — Design2Debug</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  .legal ul { list-style: none; padding-left: 0; margin-top: 0.4rem; }
+  .legal li { position: relative; padding-left: 1.1rem; margin-bottom: 0.3rem; color: #475569; font-size: 0.875rem; }
+  .legal li::before { content: "–"; position: absolute; left: 0; color: #0F172A; }
+</style>
+</head>
+<body class="bg-white text-slate-900">
+
+<header class="border-b border-slate-200" style="background-color: whitesmoke;">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+    <a href="index.html" class="flex items-center gap-2">
+      <!-- TODO: replace with your actual logo file path -->
+      <img src="js/assets/logo.png" alt="Design2Debug logo" class="h-9 w-9 rounded-md object-contain">
+      <span class="flex flex-col leading-tight">
+        <span class="text-base font-bold text-slate-900">Design2Debug</span>
+        <span class="text-[10px] font-medium tracking-widest text-slate-500">DESIGN &bull; DEVELOP &bull; DEPLOY</span>
+      </span>
+    </a>
+    <nav class="hidden items-center gap-6 text-sm text-slate-600 sm:flex">
+      <a href="index.html" class="hover:text-slate-900">Home</a>
+      <a href="index.html#services" class="inline-flex items-center gap-1 hover:text-slate-900">
+        Services <i data-lucide="chevron-down" class="h-3.5 w-3.5"></i>
+      </a>
+      <a href="projects.html" class="hover:text-slate-900">Projects</a>
+      <a href="blog.html" class="hover:text-slate-900">Blog</a>
+      <a href="faq.html" class="hover:text-slate-900">FAQ</a>
+      <a href="contact.html" class="hover:text-slate-900">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="mx-auto max-w-3xl px-6 py-10">
+  <div class="text-xs font-semibold uppercase tracking-wide text-slate-400">Legal</div>
+  <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Cookie Policy</h1>
+  <p class="mt-1 text-xs text-slate-400">Last updated: July 9, 2026</p>
+
+  <div class="legal mt-6 space-y-6">
+
+    <p class="text-sm leading-relaxed text-slate-600">This website uses cookies to improve your browsing experience.</p>
+
+    <div>
+      <h2 class="text-sm font-semibold text-slate-900">What Are Cookies?</h2>
+      <p class="mt-1 text-sm leading-relaxed text-slate-600">
+        Cookies are small text files stored on your device that help websites function efficiently.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold text-slate-900">Why We Use Cookies</h2>
+      <ul>
+        <li>Remember preferences</li>
+        <li>Improve website performance</li>
+        <li>Understand visitor behavior</li>
+        <li>Measure website traffic</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold text-slate-900">Types of Cookies</h2>
+      <div class="mt-2 space-y-2">
+        <div>
+          <h3 class="text-sm font-medium text-slate-800">Essential Cookies</h3>
+          <p class="text-sm text-slate-600">Required for the website to function properly.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium text-slate-800">Analytics Cookies</h3>
+          <p class="text-sm text-slate-600">Help us understand how visitors use our website.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium text-slate-800">Functional Cookies</h3>
+          <p class="text-sm text-slate-600">Remember preferences such as language or settings.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold text-slate-900">Managing Cookies</h2>
+      <p class="mt-1 text-sm text-slate-600">Most web browsers allow you to:</p>
+      <ul>
+        <li>Accept cookies</li>
+        <li>Reject cookies</li>
+        <li>Delete existing cookies</li>
+      </ul>
+      <p class="mt-2 text-sm text-slate-600">Disabling cookies may affect some website features.</p>
+    </div>
+
+    <div class="rounded-lg border border-slate-200 bg-slate-50 px-5 py-4">
+      <h2 class="text-sm font-semibold text-slate-900">Third-Party Cookies</h2>
+      <p class="mt-1 text-sm text-slate-600">
+        Some third-party services, such as Google Analytics, may place cookies on your device.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="footer.js"></script>
+<script>
+  renderSiteFooter("site-footer");
+  if (window.lucide) lucide.createIcons();
+</script>
+
+</body>
+</html>
