@@ -40,6 +40,10 @@ content="Design2Debug, UI UX Design, Flutter Developer, Android App Development,
 <link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
   rel="stylesheet">
+  <link
+  rel="preload"
+  as="image"
+  href="/assets/images/hero.webp">
 
 <!-- ========================================= -->
 <!-- Favicon -->
@@ -336,6 +340,18 @@ type="image/png">
   <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/styles.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script> 
+    document.addEventListener("DOMContentLoaded", () => {
+  if (document.querySelector("#projects")) {
+    initProjects();
+  }
+
+  if (document.querySelector("#contactForm")) {
+    initContactForm();
+  }
+ 
+});
+  </script>
 
 </head>
 

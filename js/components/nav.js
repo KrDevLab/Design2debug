@@ -91,12 +91,13 @@ window.renderSiteNav = function renderSiteNav(containerId) {
 >
 
     <!-- Logo -->
-    <img
-        src="js/assets/logo.png"
-        alt="Design2Debug Logo"
-        class="w-[36px] h-[36px] object-contain flex-shrink-0"
-        draggable="false"
-    />
+  <img
+  src="js/assets/logo.png"
+  alt="Design2Debug Logo"
+  width="180"
+  height="48"
+  loading="eager"
+  decoding="async">
 
     <!-- Company Name -->
     <div class="hidden md:flex flex-col justify-center ml-2">
