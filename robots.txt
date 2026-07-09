@@ -2,11 +2,4 @@ User-agent: *
 
 Allow: /
 
-Disallow: /admin/
-
-Disallow: /dashboard/
-
-Disallow: /api/
-
-Sitemap:
-https://design2debug.com/sitemap.xml
+Sitemap: https://design2debug.com/sitemap.xml
