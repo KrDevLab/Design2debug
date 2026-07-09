@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Design2Debug</title>
+  <meta name="description" content="Selected work from Design2Debug. New projects appear here as they ship." />
+  <meta property="og:title" content="Projects — Design2Debug" />
+  <meta property="og:description" content="Selected work from Design2Debug." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-paper text-ink">
+  <div id="site-nav"></div>
+  <main class="pt-12">
+    <div class="container-ibm pb-8">
+      <div class="eyebrow">Projects</div>
+      <h1 class="display-1 mt-4 text-ink">Building great things soon.</h1>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">
+        Design2Debug is at the beginning of its journey. Rather than fill this page
+        with stock screenshots, I'm leaving it honest. Real, named projects will appear
+        here as they ship — with the brief, the constraints, and the actual outcome.
+      </p>
+    </div>
+    <div id="projects-preview"></div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="js/data/regions.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/components/projectsPreview.js"></script>
+
+  <script>
+    renderSiteNav("site-nav");
+    renderProjectsPreview("projects-preview");
+    renderSiteFooter("site-footer");
+    if (window.lucide) lucide.createIcons();
+    initReveal();
+  </script>
+</body>
+</html>

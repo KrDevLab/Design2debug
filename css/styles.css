@@ -1,0 +1,185 @@
+/* ============================================================
+   Design2Debug — static HTML/Tailwind/JS build
+   Design tokens + editorial utility classes (ported from the
+   original Tailwind v4 `@theme` + custom CSS in styles.css)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --radius: 0px;
+
+  /* Paper & ink */
+  --paper: #ffffff;
+  --paper-2: #f6f7f9;
+  --ink: #1a1d29;
+  --ink-soft: #5b6172;
+  --rule: #dee1e8;
+
+  /* IBM blue */
+  --brand: #2f5fdc;
+  --brand-hover: #24439f;
+  --brand-soft: #eaf0fe;
+
+  /* Accent tones */
+  --accent-2: #59c7c9;
+  --tone-teal: #3fa8ab;
+  --tone-amber: #e0a63d;
+  --tone-pink: #d15a72;
+  --tone-violet: #7c5cd6;
+
+  --destructive: #d13b3b;
+
+  --shadow-elegant: 0 18px 40px -24px rgba(26, 29, 41, 0.3);
+  --shadow-glow: 0 0 0 1px var(--brand), 0 12px 32px -18px var(--brand);
+}
+
+* { border-color: var(--rule); box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.font-mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+/* --- Editorial helpers --- */
+.container-ibm {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: 1440px;
+}
+@media (min-width: 768px) { .container-ibm { padding-inline: 2rem; } }
+@media (min-width: 1280px) { .container-ibm { padding-inline: 3rem; } }
+
+.eyebrow {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.display-1 {
+  font-size: clamp(2.5rem, 6vw, 5.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 300;
+}
+.display-2 {
+  font-size: clamp(2rem, 4.2vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 300;
+}
+
+/* --- Animations --- */
+@keyframes auto-slide {
+  0%,18% { transform: translateX(0); }
+  22%,40% { transform: translateX(-100%); }
+  44%,62% { transform: translateX(-200%); }
+  66%,84% { transform: translateX(-300%); }
+  88%,100% { transform: translateX(-400%); }
+}
+.animate-auto-slide > * { flex: 0 0 100%; }
+.animate-auto-slide { animation: auto-slide 18s ease-in-out infinite; }
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(26,29,41,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26,29,41,0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-float { animation: float-soft 6s ease-in-out infinite; }
+
+@keyframes blob {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(20px,-10px) scale(1.05); }
+  66% { transform: translate(-15px,10px) scale(0.97); }
+}
+.animate-blob { animation: blob 14s ease-in-out infinite; }
+
+.shadow-elegant { box-shadow: var(--shadow-elegant); }
+.shadow-glow { box-shadow: var(--shadow-glow); }
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.animate-gradient { background-size: 200% 200%; animation: gradient-shift 8s ease infinite; }
+
+.text-gradient-brand {
+  background-image: linear-gradient(100deg, var(--brand) 0%, var(--tone-violet) 35%, var(--tone-pink) 65%, var(--tone-amber) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 10s ease infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in { animation: fade-in 0.6s ease-out both; }
+.animate-scale-in { animation: fade-up 0.35s ease-out both; }
+
+/* Reveal-on-scroll: hidden until [data-revealed="true"] is set by JS. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal[data-revealed="true"] { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .animate-gradient, .text-gradient-brand, .animate-blob, .animate-float, .animate-auto-slide { animation: none; }
+}
+
+.accent-stripe {
+  display: block;
+  height: 3px;
+  width: 64px;
+  background: linear-gradient(90deg, var(--brand), var(--tone-violet), var(--tone-pink), var(--tone-amber));
+  background-size: 200% 100%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.blob-color {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Hide scrollbars on snap-sliders */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* lucide icon default sizing inside our components */
+[data-lucide] { width: 1em; height: 1em; }

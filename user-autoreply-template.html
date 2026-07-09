@@ -1,0 +1,92 @@
+<!--
+  EMAILJS TEMPLATE — "User Auto-Reply"
+  ----------------------------------------
+  Paste this into: EmailJS Dashboard → Email Templates → Create New Template → Content (HTML editor / code view)
+
+  Suggested template settings:
+    To Email:    {{email}}                    (the visitor's address — this IS a variable here)
+    From Name:   Your Name / Studio Name
+    Reply To:    your-inbox@yourdomain.com     (so if they hit reply, it comes to you)
+    Subject:     Got it, {{name}} — your message is in ✦
+
+  Variables used below:
+    {{name}} {{message}} {{budget}}
+-->
+<div style="margin:0;padding:0;background-color:#EFEBE2;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#EFEBE2;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#FBF9F4;border:1px solid #DCD5C4;">
+
+          <!-- Top rule + eyebrow -->
+          <tr>
+            <td style="padding:40px 40px 0 40px;" align="center">
+              <div style="width:52px;height:52px;border-radius:999px;background-color:#B5542F;text-align:center;line-height:52px;margin:0 auto 20px auto;">
+                <span style="font-family:Georgia,serif;font-size:24px;color:#FBF9F4;">✓</span>
+              </div>
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#B5542F;font-weight:600;">
+                Message received
+              </p>
+            </td>
+          </tr>
+
+          <!-- Headline -->
+          <tr>
+            <td style="padding:14px 40px 0 40px;" align="center">
+              <h1 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:30px;line-height:1.3;color:#1A1815;">
+                Thanks, {{name}}.
+              </h1>
+              <p style="margin:10px 0 0 0;font-family:Helvetica,Arial,sans-serif;font-size:15px;line-height:1.7;color:#6B6559;max-width:420px;">
+                Your message just landed in my inbox — I read every one myself, and I'll get back to you within 24 hours.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr><td style="padding:32px 40px 0 40px;"><div style="height:1px;background-color:#DCD5C4;"></div></td></tr>
+
+          <!-- Recap of their message -->
+          <tr>
+            <td style="padding:24px 40px 8px 40px;">
+              <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#9B9484;">What you sent</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-left:3px solid #B5542F;background-color:#F3EFE5;">
+                <tr>
+                  <td style="padding:16px 18px;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#2A2620;font-style:italic;">
+                    "{{message}}"
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:14px 0 0 0;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#6B6559;">
+                Budget noted: <strong style="color:#1A1815;">{{budget}}</strong>
+              </p>
+            </td>
+          </tr>
+
+          <!-- What happens next -->
+          <tr>
+            <td style="padding:28px 40px 8px 40px;">
+              <p style="margin:0 0 6px 0;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;color:#1A1815;">While you wait —</p>
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:1.8;color:#6B6559;">
+                I'll read through what you've shared and reply personally with next steps, questions, or a quick intro call time. No auto-replies from a robot after this one, promise.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Sign-off -->
+          <tr>
+            <td style="padding:28px 40px 36px 40px;">
+              <div style="height:1px;background-color:#DCD5C4;margin-bottom:20px;"></div>
+              <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:15px;font-style:italic;color:#1A1815;">
+                Talk soon,
+              </p>
+              <p style="margin:4px 0 0 0;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#9B9484;">
+                — Your Name / Studio
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

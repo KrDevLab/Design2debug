@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Design2Debug</title>
+  <meta name="description" content="Start a project with Design2Debug. Email, WhatsApp, or the form — replies within 24 hours." />
+  <meta property="og:title" content="Contact — Design2Debug" />
+  <meta property="og:description" content="Start a project with Design2Debug." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-paper text-ink">
+  <div id="site-nav"></div>
+  <main>
+    <div class="container-ibm pt-16">
+      <div class="eyebrow">Contact</div>
+      <h1 class="display-1 mt-4 text-ink">Start a project.</h1>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">
+        The fastest path to a real reply is the form below. Quick connect channels are
+        just below it if you'd rather not write much.
+      </p>
+    </div>
+    <div id="contact-section"></div>
+    <div id="quick-connect"></div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="js/data/regions.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/components/contactForm.js"></script>
+  <script src="js/components/contactSection.js"></script>
+  <script src="js/components/quickConnect.js"></script>
+
+  <script>
+    renderSiteNav("site-nav");
+    renderContactSection("contact-section");
+    renderQuickConnect("quick-connect");
+    renderSiteFooter("site-footer");
+    if (window.lucide) lucide.createIcons();
+    initReveal();
+  </script>
+</body>
+</html>

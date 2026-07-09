@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog — Design2Debug notes on design, code &amp; shipping</title>
+  <meta name="description" content="Field notes from an independent practice — design systems, Flutter, performance, and the messy parts of shipping software." />
+  <meta property="og:title" content="Design2Debug — Blog" />
+  <meta property="og:description" content="Essays on design, code, and shipping from an independent practice." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-paper">
+  <div id="site-nav"></div>
+  <main>
+    <div id="blog-page"></div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="js/data/regions.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/components/newsletter.js"></script>
+  <script src="js/components/blogPage.js"></script>
+
+  <script>
+    renderSiteNav("site-nav");
+    renderBlogPage("blog-page");
+    renderSiteFooter("site-footer");
+    if (window.lucide) lucide.createIcons();
+    initReveal();
+  </script>
+</body>
+</html>

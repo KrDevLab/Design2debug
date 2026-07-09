@@ -1,0 +1,119 @@
+<!--
+  EMAILJS TEMPLATE — "Owner Notification"
+  ----------------------------------------
+  Paste this into: EmailJS Dashboard → Email Templates → Create New Template → Content (HTML editor / code view)
+
+  Suggested template settings:
+    To Email:    your-inbox@yourdomain.com   (your own address — hardcode it, don't use a variable)
+    From Name:   {{name}} via Site Inquiry
+    Reply To:    {{email}}                    (so hitting "Reply" goes straight to the visitor)
+    Subject:     New inquiry from {{name}} — {{budget}}
+
+  Variables used below (must match what the JS sends as template_params):
+    {{name}} {{email}} {{phone}} {{region}} {{budget}} {{message}} {{time}}
+-->
+<div style="margin:0;padding:0;background-color:#EFEBE2;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#EFEBE2;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#FBF9F4;border:1px solid #DCD5C4;">
+
+          <!-- Top rule + eyebrow -->
+          <tr>
+            <td style="padding:36px 40px 0 40px;">
+              <div style="height:2px;background-color:#1A1815;width:36px;margin-bottom:18px;"></div>
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#B5542F;font-weight:600;">
+                New project inquiry
+              </p>
+            </td>
+          </tr>
+
+          <!-- Headline -->
+          <tr>
+            <td style="padding:10px 40px 24px 40px;">
+              <h1 style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:1.3;color:#1A1815;">
+                Someone wants to build<br/>something with you.
+              </h1>
+              <p style="margin:12px 0 0 0;font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#6B6559;">
+                <strong style="color:#1A1815;">{{name}}</strong> just reached out through your site. Full details below — reply directly to this email to answer them.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr><td style="padding:0 40px;"><div style="height:1px;background-color:#DCD5C4;"></div></td></tr>
+
+          <!-- Details table -->
+          <tr>
+            <td style="padding:28px 40px 8px 40px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding:8px 0;width:110px;vertical-align:top;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#9B9484;">Name</td>
+                  <td style="padding:8px 0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:#1A1815;">{{name}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 0;width:110px;vertical-align:top;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#9B9484;">Email</td>
+                  <td style="padding:8px 0;font-family:Helvetica,Arial,sans-serif;font-size:14px;">
+                    <a href="mailto:{{email}}" style="color:#B5542F;text-decoration:none;">{{email}}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 0;width:110px;vertical-align:top;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#9B9484;">Phone</td>
+                  <td style="padding:8px 0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:#1A1815;">{{phone}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 0;width:110px;vertical-align:top;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#9B9484;">Region</td>
+                  <td style="padding:8px 0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:#1A1815;">{{region}}</td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 0;width:110px;vertical-align:top;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#9B9484;">Budget</td>
+                  <td style="padding:8px 0;font-family:Helvetica,Arial,sans-serif;font-size:14px;color:#1A1815;font-weight:600;">{{budget}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Message block -->
+          <tr>
+            <td style="padding:16px 40px 8px 40px;">
+              <p style="margin:0 0 8px 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#9B9484;">Message</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-left:3px solid #B5542F;background-color:#F3EFE5;">
+                <tr>
+                  <td style="padding:16px 18px;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.7;color:#2A2620;font-style:italic;">
+                    "{{message}}"
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- CTA -->
+          <tr>
+            <td style="padding:28px 40px 8px 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="background-color:#1A1815;">
+                    <a href="mailto:{{email}}" style="display:inline-block;padding:13px 26px;font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#FBF9F4;text-decoration:none;letter-spacing:0.3px;">
+                      Reply to {{name}} →
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding:32px 40px 36px 40px;">
+              <div style="height:1px;background-color:#DCD5C4;margin-bottom:16px;"></div>
+              <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#9B9484;">
+                Received {{time}} · Sent automatically from your site's contact form
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

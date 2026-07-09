@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDentiqX | Secure Identity Wallet & Document Vault</title>
+    <meta name="description" content="IDentiqX is a modern digital identity wallet built to securely store, organize, and access important personal documents from one place.">
+    <meta name="keywords" content="IDentiqX, Digital Wallet, Document Vault, Identity, Secure Storage">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+
+    <style type="text/tailwindcss">
+    @layer theme {
+        :root {
+            --primary: #6366F1;
+            --secondary: #06B6D4;
+            --accent: #8B5CF6;
+            --bg: #FAFAFA;
+            --text-main: #111827;
+        }
+    }
+
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+        body {
+            @apply bg-[var(--bg)] text-[var(--text-main)] font-['Inter'];
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            @apply font-['Space_Grotesk'] tracking-tight;
+        }
+        code, pre {
+            @apply font-['JetBrains_Mono'];
+        }
+    }
+
+    @layer components {
+        .glass-card {
+            @apply bg-white/70 border border-gray-200/50 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.04)];
+        }
+        .text-gradient {
+            @apply bg-clip-text text-transparent bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#06B6D4];
+        }
+        .btn-primary {
+            @apply px-6 py-3 rounded-full bg-slate-900 text-white font-semibold hover:scale-105 transition-transform duration-300 flex items-center gap-2;
+        }
+        .btn-secondary {
+            @apply px-6 py-3 rounded-full glass-card hover:bg-slate-50 transition-all duration-300 flex items-center gap-2 text-slate-700;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @layer utilities {
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #FAFAFA;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #CBD5E1;
+        border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94A3B8;
+    }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <!-- Scripts -->
+    <script type="text/babel" src="utils/useScrollReveal.js"></script>
+    <script type="text/babel" src="components/Navigation.js"></script>
+    <script type="text/babel" src="components/Hero.js"></script>
+    <script type="text/babel" src="components/Features.js"></script>
+    <script type="text/babel" src="components/TechStack.js"></script>
+    <script type="text/babel" src="app.js"></script>
+</body>
+</html>

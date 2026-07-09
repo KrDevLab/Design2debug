@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Client feedback — Design2Debug</title>
+  <meta name="description" content="Honest reviews from clients of Design2Debug. Submitted directly through the form on this page — no approval filter." />
+  <meta property="og:title" content="Client feedback — Design2Debug" />
+  <meta property="og:description" content="Honest reviews from clients of Design2Debug." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-paper text-ink">
+  <div id="site-nav"></div>
+  <main>
+    <div id="testimonials-page"></div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="js/data/regions.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/components/nav.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/components/testimonialsPreview.js"></script>
+  <script src="js/components/testimonialsPage.js"></script>
+
+  <script>
+    renderSiteNav("site-nav");
+    renderTestimonialsPage("testimonials-page");
+    renderSiteFooter("site-footer");
+    if (window.lucide) lucide.createIcons();
+    initReveal();
+  </script>
+</body>
+</html>
