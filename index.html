@@ -35,6 +35,11 @@ content="Design2Debug, UI UX Design, Flutter Developer, Android App Development,
 <meta name="revisit-after" content="7 days">
 
 <link rel="canonical" href="https://design2debug.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet">
 
 <!-- ========================================= -->
 <!-- Favicon -->
@@ -216,6 +221,16 @@ type="image/png">
     "@type": "Brand",
     "name": "Design2Debug"
   }
+  {
+  "@type": "Organization",
+  ...
+  "founder": {
+    "@id": "https://design2debug.com/#founder"
+  },
+  "employee": {
+    "@id": "https://design2debug.com/#founder"
+  }
+}
 }
 </script>
 
@@ -232,6 +247,29 @@ type="image/png">
     }
   ]
 }
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://design2debug.com/#founder",
+  "name": "Kishore Ravi",
+  "jobTitle": "Founder & Software Developer",
+  "worksFor": {
+    "@id": "https://design2debug.com/#organization"
+  },
+  "url": "https://design2debug.com",
+  "image": "https://design2debug.com/android-chrome-512x512.png",
+  "knowsAbout": [
+    "Flutter",
+    "Dart",
+    "UI/UX Design",
+    "Web Development",
+    "Firebase",
+    "Mobile App Development"
+  ]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -291,11 +329,16 @@ type="image/png">
 }
 </script>
 
+
+
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/styles.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
+
 <body class="min-h-screen bg-paper text-ink">
   <div id="site-nav"></div>
   <main>
