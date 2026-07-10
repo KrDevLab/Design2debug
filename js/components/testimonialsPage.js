@@ -14,22 +14,35 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
       .join("");
   }
 
-  function reviewCardHtml(t) {
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function reviewCardHtml(t, idx) {
+    const fileNum = String(idx + 1).padStart(2, "0");
     return `
-      <article class="relative flex h-full flex-col border border-rule bg-paper p-6">
-        <div class="absolute right-3 top-3">
-          <button aria-label="Delete review" data-del="${t.id}" class="inline-flex h-8 w-8 items-center justify-center text-ink-soft hover:bg-paper-2 hover:text-destructive">
-            <i data-lucide="trash-2" class="h-4 w-4"></i>
-          </button>
+      <article class="flex h-full flex-col overflow-hidden rounded-lg border border-rule bg-paper shadow-elegant">
+        <div class="flex items-center gap-2 border-b border-rule bg-paper-2 px-4 py-3">
+          <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f56]"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f]"></span>
+          <span class="ml-2 font-mono text-xs text-ink-soft">review_${fileNum}.diff</span>
         </div>
-        <div class="flex items-center gap-1 text-brand">
-          ${Array.from({ length: t.rating }).map(() => '<i data-lucide="star" class="h-4 w-4" fill="currentColor"></i>').join("")}
-          ${Array.from({ length: 5 - t.rating }).map(() => '<i data-lucide="star" class="h-4 w-4 text-ink-soft/30"></i>').join("")}
+        <div class="flex-1 px-5 py-5 font-mono text-[13px] leading-relaxed">
+          <div class="text-ink-soft/60">// client_feedback.log</div>
+          <div class="mt-3 flex gap-3">
+            <span class="select-none text-tone-teal">+</span>
+            <p class="text-ink">
+              <span class="mr-1 text-tone-amber">${"★".repeat(t.rating)}</span><span class="mr-2 text-ink-soft/30">${"★".repeat(5 - t.rating)}</span>${escapeHtml(t.feedback)}
+            </p>
+          </div>
         </div>
-        <p class="mt-4 text-base leading-relaxed text-ink">"${t.feedback}"</p>
-        <div class="mt-6 flex items-center justify-between border-t border-rule pt-4 text-xs">
-          <span class="text-ink">${t.name}</span>
-          ${t.service ? `<span class="font-mono text-ink-soft">${t.service}</span>` : ""}
+        <div class="mt-auto flex items-center justify-between border-t border-dashed border-rule px-5 py-3">
+          <span class="font-mono text-xs text-ink-soft">⊸ ${escapeHtml(t.name)}${t.service ? ` · ${escapeHtml(t.service)}` : ""}</span>
+          <span class="rounded border border-tone-teal/30 bg-tone-teal/10 px-2 py-1 font-mono text-[11px] text-tone-teal">rating: ${t.rating}/5</span>
         </div>
       </article>`;
   }
@@ -63,11 +76,18 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
               </p>
             </div>`
               : `
-            <div class="mt-8 hidden grid-cols-3 gap-px bg-rule lg:grid">
-              ${items.map((t) => `<div class="bg-paper">${reviewCardHtml(t)}</div>`).join("")}
-            </div>
-            <div class="mt-8 flex flex-col gap-4 lg:hidden">
-              ${items.map(reviewCardHtml).join("")}
+            <div class="relative mt-8">
+              <div id="testimonial-track" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                ${items.map((t, i) => `<div class="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-[calc(33.333%-16px)]">${reviewCardHtml(t, i)}</div>`).join("")}
+              </div>
+              <div class="mt-6 flex items-center justify-center gap-3">
+                <button type="button" id="testimonial-prev" aria-label="Previous reviews" class="inline-flex h-10 w-10 items-center justify-center border border-rule bg-paper text-ink transition-colors hover:bg-paper-2">
+                  <i data-lucide="chevron-left" class="h-5 w-5"></i>
+                </button>
+                <button type="button" id="testimonial-next" aria-label="Next reviews" class="inline-flex h-10 w-10 items-center justify-center border border-rule bg-paper text-ink transition-colors hover:bg-paper-2">
+                  <i data-lucide="chevron-right" class="h-5 w-5"></i>
+                </button>
+              </div>
             </div>`
           }
         </div>
@@ -84,7 +104,7 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
               <h2 class="display-2 mt-4 text-ink">Leave your <span class="text-gradient-brand">own rating.</span></h2>
               <p class="mt-5 max-w-md text-sm leading-relaxed text-ink-soft">
                 This goes straight onto this page once you submit it — no approval step
-                filters anything out. You can delete your own review at any time from its card.
+                filters anything out.
               </p>
               <div class="mt-8 inline-flex items-center gap-2 border border-rule bg-paper-2 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-ink-soft">
                 <span class="h-1.5 w-1.5 rounded-full bg-tone-teal"></span>
@@ -166,14 +186,21 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
         </div>
       </section>`;
 
-    // wire delete buttons
-    el.querySelectorAll("[data-del]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        if (!confirm("Delete this review? This cannot be undone.")) return;
-        window.saveTestimonials(window.getTestimonials().filter((t) => t.id !== btn.dataset.del));
-        paint();
-      });
-    });
+    // wire testimonial slider
+    const track = el.querySelector("#testimonial-track");
+    const prevBtn = el.querySelector("#testimonial-prev");
+    const nextBtn = el.querySelector("#testimonial-next");
+    if (track && prevBtn && nextBtn) {
+      const scrollByCard = (dir) => {
+        const card = track.firstElementChild;
+        if (!card) return;
+        const gap = 24; // matches gap-6
+        const amount = card.getBoundingClientRect().width + gap;
+        track.scrollBy({ left: dir * amount, behavior: "smooth" });
+      };
+      prevBtn.addEventListener("click", () => scrollByCard(-1));
+      nextBtn.addEventListener("click", () => scrollByCard(1));
+    }
 
     // wire star picker
     rating = 0;
