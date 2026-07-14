@@ -1,3 +1,4 @@
+// js/components/testimonialsPage.js
 window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
   const el = document.getElementById(containerId);
   const SERVICES = ["UI/UX Design","Flutter App Development","Website Development","Responsive Design","Prototyping","Brand Identity","Consultation"];
@@ -53,9 +54,38 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
     return out;
   }
 
-  function paint() {
-    const items = window.getTestimonials();
+  function loadingHtml() {
+    return `
+      <div class="border-b border-rule">
+        <div class="container-ibm py-16">
+          <div class="eyebrow">Client feedback</div>
+          <h1 class="display-1 mt-4 text-ink">What it's actually like to work with me.</h1>
+          <p class="mt-6 max-w-2xl text-base leading-relaxed text-ink-soft">
+            Every entry below was submitted directly by a client through the form on this
+            page. I don't write these, edit them, or remove the honest ones.
+          </p>
+        </div>
+      </div>
+      <section class="border-b border-rule bg-paper-2 py-16">
+        <div class="container-ibm">
+          <div class="font-mono text-xs text-ink-soft">Loading reviews…</div>
+        </div>
+      </section>`;
+  }
 
+  // Kick off with a loading state immediately, then fetch + render.
+  async function paint() {
+    el.innerHTML = loadingHtml();
+    let items = [];
+    try {
+      items = await window.getTestimonials();
+    } catch (err) {
+      console.error("Failed to load testimonials:", err);
+    }
+    render(items);
+  }
+
+  function render(items) {
     el.innerHTML = `
       <div class="border-b border-rule">
         <div class="container-ibm py-16">
@@ -78,7 +108,7 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
               <div class="font-mono text-xs text-ink-soft">Nothing here yet</div>
               <p class="mt-2 text-ink">
                 No client has submitted a rating yet. Once someone does, their review
-                shows up here exactly as they wrote it.
+                shows up here for every visitor.
               </p>
             </div>`
               : `
@@ -130,7 +160,7 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
               </p>
               <div class="mt-8 inline-flex items-center gap-2 border border-rule bg-paper-2 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-ink-soft">
                 <span class="h-1.5 w-1.5 rounded-full bg-tone-teal"></span>
-                Public · stays on this page
+                Public · visible to every visitor
               </div>
             </div>
 
@@ -195,7 +225,7 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
 
                 <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-rule pt-6">
                   <p class="max-w-sm text-[11px] text-ink-soft">
-                    Reviews are stored in this browser for the demo build — no account or
+                    Reviews are stored securely and shown to every visitor — no account or
                     sign-in required.
                   </p>
                   <button type="submit" class="inline-flex items-center justify-center gap-2 bg-ink px-6 py-3 text-sm text-paper transition-all hover:bg-brand hover:shadow-glow disabled:opacity-60">
@@ -234,9 +264,11 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
     });
 
     // submit
-    el.querySelector("#testimonial-form").addEventListener("submit", (e) => {
+    el.querySelector("#testimonial-form").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const fd = new FormData(e.target);
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const fd = new FormData(form);
       const name = (fd.get("name") || "").toString().trim();
       const service = (fd.get("service") || "").toString();
       const feedback = (fd.get("feedback") || "").toString().trim();
@@ -249,15 +281,20 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
       }
       errEl.classList.add("hidden");
 
-      const list = window.getTestimonials();
-      list.unshift({
-        id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
-        user_id: "local-user",
-        name, service: service || null, rating, feedback,
-        created_at: new Date().toISOString(),
-      });
-      window.saveTestimonials(list);
-      paint();
+      submitBtn.disabled = true;
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = "Submitting…";
+
+      try {
+        await window.addTestimonial({ name, service: service || null, rating, feedback });
+        await paint();
+      } catch (err) {
+        console.error(err);
+        errEl.textContent = (err.code || "error") + " : " + (err.message || "Something went wrong. Please try again.");
+        errEl.classList.remove("hidden");
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
     });
 
     if (window.lucide) lucide.createIcons();

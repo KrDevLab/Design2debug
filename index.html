@@ -342,23 +342,30 @@ type="image/svg+xml">
   </main>
   <div id="site-footer"></div>
 
-  <!-- Data -->
-  <script src="js/data/regions.js"></script>
-  <!-- Helpers -->
-  <script src="js/reveal.js"></script>
-  <script src="js/slider.js"></script>
-  <!-- Components -->
-  <script src="js/components/nav.js"></script>
-  <script src="js/components/footer.js"></script>
-  <script src="js/components/hero.js"></script>
-  <script src="js/components/aboutpreview.js"></script>
-  <script src="js/components/services.js"></script>
-  <script src="js/components/process.js"></script>
-  <script src="js/components/projectsPreview.js"></script>
-  <script src="js/components/testimonialsPreview.js"></script>
-  <script src="js/components/quickConnect.js"></script>
-  <script src="js/components/contactForm.js"></script>
-  <script src="js/components/contactSection.js"></script>
+<!-- Data -->
+<script src="js/data/regions.js"></script>
+<!-- Helpers -->
+<script src="js/reveal.js"></script>
+<script src="js/slider.js"></script>
+
+<!-- Firebase compat SDK — must load BEFORE firebase-init.js -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="js/components/firebase-init.js"></script>
+
+<!-- Components -->
+<script src="js/components/nav.js"></script>
+<script src="js/components/footer.js"></script>
+<script src="js/components/hero.js"></script>
+<script src="js/components/aboutpreview.js"></script>
+<script src="js/components/services.js"></script>
+<script src="js/components/process.js"></script>
+<script src="js/components/projectsPreview.js"></script>
+<script src="js/data/testimonials.js"></script>
+<script src="js/components/testimonialsPreview.js"></script>
+<script src="js/components/quickConnect.js"></script>
+<script src="js/components/contactForm.js"></script>
+<script src="js/components/contactSection.js"></script>
 
   <script>
     renderSiteNav("site-nav");

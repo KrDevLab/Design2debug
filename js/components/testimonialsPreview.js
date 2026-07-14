@@ -1,25 +1,5 @@
-// This static build has no backend, so testimonials are persisted in the
-// browser's localStorage (key: "d2d_testimonials") instead of Supabase.
-window.getTestimonials = function getTestimonials() {
-  try {
-    return JSON.parse(localStorage.getItem("d2d_testimonials") || "[]");
-  } catch {
-    return [];
-  }
-};
-window.saveTestimonials = function saveTestimonials(list) {
-  localStorage.setItem("d2d_testimonials", JSON.stringify(list));
-};
-
-// Deletion is intentionally NOT wired to any button in the public UI.
-// It exists only as a code-level function — call it from the console
-// (or from a future admin console) as window.deleteTestimonial(id).
-window.deleteTestimonial = function deleteTestimonial(id) {
-  const list = window.getTestimonials().filter((t) => t.id !== id);
-  window.saveTestimonials(list);
-  return list;
-};
-
+// js/components/testimonialsPreview.js
+//
 // Card is styled as a terminal / git-diff window — feedback renders as an
 // added diff line, the reviewer as a commit author, rating as a status pill.
 function testimonialCardHtml(t, index) {
@@ -62,9 +42,30 @@ window.renderTestimonialsPreview = function renderTestimonialsPreview(containerI
   const nextId = `${containerId}-next`;
   const countId = `${containerId}-count`;
 
-  function paint() {
-    const data = window.getTestimonials().slice(0, 6);
+  function chunk(list, size) {
+    const out = [];
+    for (let i = 0; i < list.length; i += size) out.push(list.slice(i, i + size));
+    return out;
+  }
 
+  async function paint() {
+    el.innerHTML = `
+      <section id="testimonials" class="border-b border-rule bg-paper-2 py-24">
+        <div class="container-ibm">
+          <div class="font-mono text-xs text-ink-soft">Loading reviews…</div>
+        </div>
+      </section>`;
+
+    let data = [];
+    try {
+      data = (await window.getTestimonials()).slice(0, 6);
+    } catch (err) {
+      console.error("Failed to load testimonials:", err);
+    }
+    render(data);
+  }
+
+  function render(data) {
     el.innerHTML = `
       <section id="testimonials" class="border-b border-rule bg-paper-2 py-24">
         <div class="container-ibm">
@@ -136,12 +137,6 @@ window.renderTestimonialsPreview = function renderTestimonialsPreview(containerI
 
     if (data.length > 0) setupCarousel(Math.ceil(data.length / 3));
     if (window.lucide) lucide.createIcons();
-  }
-
-  function chunk(list, size) {
-    const out = [];
-    for (let i = 0; i < list.length; i += size) out.push(list.slice(i, i + size));
-    return out;
   }
 
   function setupCarousel(count) {
