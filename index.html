@@ -202,26 +202,20 @@ type="image/svg+xml">
 
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://design2debug.com/#organization",
-  "name": "Design2Debug",
-  "url": "https://design2debug.com",
-  "logo": "https://design2debug.com/web-app-manifest-512x512.png",
-  "image": "https://design2debug.com/web-app-manifest-512x512.png",
-  "description": "Design2Debug is an independent software studio specializing in Flutter app development, responsive websites, UI/UX design, and modern digital solutions.",
-  "email": "founder@design2debug.com",
-  "foundingDate": "2026-07-01",
-  "brand": {
-    "@type": "Brand",
-    "name": "Design2Debug"
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Design2Debug",
+  "url":"https://design2debug.com",
+  "logo":"https://design2debug.com/assets/logo.png",
+  "founder":{
+    "@type":"Person",
+    "name":"Kishore Ravi",
+    "url":"https://design2debug.com/about"
   },
-  "founder": {
-    "@id": "https://design2debug.com/#founder"
-  },
-  "employee": {
-    "@id": "https://design2debug.com/#founder"
-  }
+  "sameAs":[
+    "https://www.linkedin.com/company/design2debug/",
+    "https://www.instagram.com/design2debug?igsh=eHFqY2I1ZG9kc2du"
+  ]
 }
 </script>
 
@@ -259,6 +253,12 @@ type="image/svg+xml">
     "Firebase",
     "Mobile App Development"
   ]
+
+   "sameAs":[
+    "https://www.linkedin.com/in/kishore-ravi-/",
+    "https://www.instagram.com/kisho.rex_?igsh=MTJhY2xkMjFvdWVjZw=="
+  ]
+  
 }
 </script>
 <script type="application/ld+json">
@@ -335,6 +335,7 @@ type="image/svg+xml">
   <div id="site-nav"></div>
   <main>
     <div id="hero"></div>
+    <div id="about-preview"></div>
     <div id="services"></div>
     <div id="process"></div>
     <div id="projects-preview"></div>
@@ -353,6 +354,7 @@ type="image/svg+xml">
   <script src="js/components/nav.js"></script>
   <script src="js/components/footer.js"></script>
   <script src="js/components/hero.js"></script>
+  <script src="js/components/aboutpreview.js"></script>
   <script src="js/components/services.js"></script>
   <script src="js/components/process.js"></script>
   <script src="js/components/projectsPreview.js"></script>
@@ -364,6 +366,7 @@ type="image/svg+xml">
   <script>
     renderSiteNav("site-nav");
     renderHero("hero");
+    renderAboutPreview("about-preview");
     renderServices("services");
     renderProcess("process");
     renderProjectsPreview("projects-preview");

@@ -33,7 +33,7 @@ window.renderContactSection = function renderContactSection(containerId) {
       <div class="container-ibm relative grid gap-10 lg:grid-cols-12 lg:gap-14">
         <div class="reveal lg:col-span-5">
           <span class="accent-stripe mb-5 block"></span>
-          <div class="eyebrow">06 — Contact</div>
+          <div class="eyebrow">07 — Contact</div>
           <h2 class="display-2 mt-4 text-ink">Let's build <span class="text-gradient-brand">something.</span></h2>
           <p class="mt-4 max-w-md text-sm leading-relaxed text-ink-soft">
             Brief, audit, second opinion, or a full build — drop the details in the form

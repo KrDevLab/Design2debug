@@ -70,7 +70,7 @@ window.renderTestimonialsPreview = function renderTestimonialsPreview(containerI
         <div class="container-ibm">
           <div class="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <div class="eyebrow">05 — Client feedback</div>
+              <div class="eyebrow">06 — Client feedback</div>
               <h2 class="display-2 mt-4 text-ink">What it's actually like to work with me.</h2>
               <p class="mt-4 max-w-xl text-sm leading-relaxed text-ink-soft">
                 Every entry below was submitted directly by a client through the form on the

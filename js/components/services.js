@@ -71,7 +71,7 @@ window.renderServices = function renderServices(containerId) {
         <div class="reveal grid gap-10 lg:grid-cols-12">
           <div class="lg:col-span-4">
             <span class="accent-stripe mb-5 block"></span>
-            <div class="eyebrow">02 — Services</div>
+            <div class="eyebrow">03 — Services</div>
             <h2 class="display-2 mt-4 text-ink">What I build, <span class="text-gradient-brand">end&nbsp;to&nbsp;end.</span></h2>
           </div>
           <p class="text-base leading-relaxed text-ink-soft lg:col-span-7 lg:col-start-6">

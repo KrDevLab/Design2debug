@@ -21,7 +21,7 @@ window.renderProcess = function renderProcess(containerId) {
         <div class="reveal grid gap-10 lg:grid-cols-12">
           <div class="lg:col-span-5">
             <span class="accent-stripe mb-5 block"></span>
-            <div class="eyebrow">03 — Process</div>
+            <div class="eyebrow">4 — Process</div>
             <h2 class="display-2 mt-4 text-ink">Design · Develop · <span class="text-gradient-brand">Debug · Deliver.</span></h2>
             <p class="mt-6 max-w-md text-sm leading-relaxed text-ink-soft">
               A linear path, kept short on purpose. You always know which of the four

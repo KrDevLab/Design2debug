@@ -47,6 +47,12 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
       </article>`;
   }
 
+  function chunk(list, size) {
+    const out = [];
+    for (let i = 0; i < list.length; i += size) out.push(list.slice(i, i + size));
+    return out;
+  }
+
   function paint() {
     const items = window.getTestimonials();
 
@@ -76,17 +82,33 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
               </p>
             </div>`
               : `
-            <div class="relative mt-8">
-              <div id="testimonial-track" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                ${items.map((t, i) => `<div class="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-[calc(33.333%-16px)]">${reviewCardHtml(t, i)}</div>`).join("")}
+            <div class="mt-8">
+              <div class="overflow-hidden">
+                <div id="testimonial-track" class="flex transition-transform duration-500 ease-out">
+                  ${chunk(items, 3)
+                    .map(
+                      (page, pageIndex) => `
+                    <div class="grid w-full shrink-0 grid-cols-1 gap-5 px-0.5 md:grid-cols-2 lg:grid-cols-3">
+                      ${page.map((t, i) => reviewCardHtml(t, pageIndex * 3 + i)).join("")}
+                    </div>`
+                    )
+                    .join("")}
+                </div>
               </div>
-              <div class="mt-6 flex items-center justify-center gap-3">
-                <button type="button" id="testimonial-prev" aria-label="Previous reviews" class="inline-flex h-10 w-10 items-center justify-center border border-rule bg-paper text-ink transition-colors hover:bg-paper-2">
-                  <i data-lucide="chevron-left" class="h-5 w-5"></i>
-                </button>
-                <button type="button" id="testimonial-next" aria-label="Next reviews" class="inline-flex h-10 w-10 items-center justify-center border border-rule bg-paper text-ink transition-colors hover:bg-paper-2">
-                  <i data-lucide="chevron-right" class="h-5 w-5"></i>
-                </button>
+
+              <div class="mt-6 flex items-center justify-between">
+                <div id="testimonial-dots" class="flex items-center gap-2"></div>
+                <div class="flex items-center gap-4">
+                  <span id="testimonial-count" class="font-mono text-xs text-ink-soft"></span>
+                  <div class="flex items-center gap-2">
+                    <button type="button" id="testimonial-prev" aria-label="Previous reviews" class="inline-flex h-10 w-10 items-center justify-center border border-rule bg-paper text-ink hover:border-ink hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-rule disabled:hover:bg-paper disabled:hover:text-ink">
+                      <i data-lucide="chevron-left" class="h-4 w-4"></i>
+                    </button>
+                    <button type="button" id="testimonial-next" aria-label="Next reviews" class="inline-flex h-10 w-10 items-center justify-center border border-rule bg-paper text-ink hover:border-ink hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-rule disabled:hover:bg-paper disabled:hover:text-ink">
+                      <i data-lucide="chevron-right" class="h-4 w-4"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>`
           }
@@ -122,7 +144,7 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
                   </div>
                   <label class="block flex-1">
                     <div class="eyebrow mb-2">Your name</div>
-                    <input name="name" class="w-full border border-rule bg-paper px-3 py-3 text-sm text-ink placeholder:text-ink-soft/60 focus:border-ink focus:outline-none" placeholder="e.g. Priya R." />
+                    <input name="name" class="w-full border border-rule bg-paper px-3 py-3 text-sm text-ink placeholder:text-ink-soft/60 focus:border-ink focus:outline-none" placeholder="e.g. Kishore Isaac" />
                   </label>
                 </div>
 
@@ -186,20 +208,9 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
         </div>
       </section>`;
 
-    // wire testimonial slider
-    const track = el.querySelector("#testimonial-track");
-    const prevBtn = el.querySelector("#testimonial-prev");
-    const nextBtn = el.querySelector("#testimonial-next");
-    if (track && prevBtn && nextBtn) {
-      const scrollByCard = (dir) => {
-        const card = track.firstElementChild;
-        if (!card) return;
-        const gap = 24; // matches gap-6
-        const amount = card.getBoundingClientRect().width + gap;
-        track.scrollBy({ left: dir * amount, behavior: "smooth" });
-      };
-      prevBtn.addEventListener("click", () => scrollByCard(-1));
-      nextBtn.addEventListener("click", () => scrollByCard(1));
+    // wire testimonial carousel (paginated, 3-per-row, matches homepage preview)
+    if (items.length > 0) {
+      setupCarousel(Math.ceil(items.length / 3));
     }
 
     // wire star picker
@@ -250,6 +261,44 @@ window.renderTestimonialsPage = function renderTestimonialsPage(containerId) {
     });
 
     if (window.lucide) lucide.createIcons();
+  }
+
+  function setupCarousel(count) {
+    const track = el.querySelector("#testimonial-track");
+    const dots = el.querySelector("#testimonial-dots");
+    const prev = el.querySelector("#testimonial-prev");
+    const next = el.querySelector("#testimonial-next");
+    const countEl = el.querySelector("#testimonial-count");
+
+    dots.innerHTML = Array.from({ length: count })
+      .map((_, i) => `<button type="button" data-dot="${i}" aria-label="Go to page ${i + 1}" class="h-1.5 w-1.5 rounded-full bg-rule transition-all"></button>`)
+      .join("");
+    const dotEls = Array.from(dots.querySelectorAll("[data-dot]"));
+
+    let index = 0;
+
+    function render() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dotEls.forEach((d, i) => {
+        d.classList.toggle("w-5", i === index);
+        d.classList.toggle("bg-brand", i === index);
+        d.classList.toggle("bg-rule", i !== index);
+      });
+      countEl.textContent = `${String(index + 1).padStart(2, "0")} / ${String(count).padStart(2, "0")}`;
+      prev.disabled = index === 0;
+      next.disabled = index === count - 1;
+    }
+
+    function goTo(i) {
+      index = Math.max(0, Math.min(count - 1, i));
+      render();
+    }
+
+    prev.addEventListener("click", () => goTo(index - 1));
+    next.addEventListener("click", () => goTo(index + 1));
+    dotEls.forEach((d, i) => d.addEventListener("click", () => goTo(i)));
+
+    render();
   }
 
   paint();

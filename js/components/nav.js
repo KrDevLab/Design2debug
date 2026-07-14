@@ -2,6 +2,7 @@ window.renderSiteNav = function renderSiteNav(containerId) {
   // Plain links shown on the left, next to the logo
   const leftLinks = [
     { href: "index.html", label: "Home" },
+    { href: "about.html", label: "About" },
     { href: "projects.html", label: "Projects" },
     { href: "blog.html", label: "Blog" },
     { href: "contact.html", label: "Contact" },

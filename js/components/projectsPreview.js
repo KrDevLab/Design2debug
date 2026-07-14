@@ -174,7 +174,7 @@ window.renderProjectsPreview = function renderProjectsPreview(containerId) {
             <span class="accent-stripe mb-5 block"></span>
 
             <div class="eyebrow">
-              04 — Featured Projects
+              05 — Featured Projects
             </div>
 
             <h2 class="display-2 mt-4 text-ink">
